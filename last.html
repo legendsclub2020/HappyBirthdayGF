@@ -245,7 +245,7 @@
         /* Welcome Section */
         .welcome {
             text-align: center;
-            padding: 2rem 2rem 4rem 2rem;
+            padding: 2rem 2rem 3rem 2rem;
             position: relative;
             z-index: 3;
         }
@@ -270,10 +270,10 @@
         .memory-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 1rem 2rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
             z-index: 3;
             position: relative;
         }
@@ -281,26 +281,34 @@
         .memory-card-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
+            transition: transform 0.4s ease;
         }
 
-        /* Custom Themed Mini Spotify Bar */
+        .memory-card-wrapper:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Custom Soft Themed Mini Spotify Bar Frame */
         .mini-spotify-bar {
             width: 100%;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
-            background: linear-gradient(135deg, #ffb6c1, #ff69b4);
-            padding: 3px;
+            border-radius: 18px;
+            padding: 6px;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2);
+            border: 1.5px solid rgba(255, 182, 193, 0.6);
+            transition: all 0.3s ease;
         }
 
         .mini-spotify-bar.light-pink {
-            background: linear-gradient(135deg, #ffe4e1, #ffb6c1);
-            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
+            background: rgba(255, 240, 245, 0.85);
+            border: 1.5px solid #ffb6c1;
+            box-shadow: 0 8px 20px rgba(255, 182, 193, 0.35);
         }
 
         .mini-spotify-bar iframe {
-            border-radius: 10px;
+            border-radius: 12px;
             display: block;
         }
 
@@ -308,32 +316,11 @@
             background: rgba(255, 255, 255, 0.9);
             border-radius: 20px;
             padding: 1.5rem;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
             position: relative;
             overflow: hidden;
             height: 100%;
-        }
-
-        .memory-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .memory-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transform: translateX(-100%);
-            transition: 0.5s;
-        }
-
-        .memory-card:hover::before {
-            transform: translateX(100%);
+            border: 1px solid rgba(255, 255, 255, 0.6);
         }
 
         .memory-img {
@@ -345,14 +332,14 @@
             transition: transform 0.5s ease;
         }
 
-        .memory-card:hover .memory-img {
-            transform: scale(1.05);
+        .memory-card-wrapper:hover .memory-img {
+            transform: scale(1.03);
         }
 
         .memory-date {
             font-family: 'Dancing Script', cursive;
             color: #ff69b4;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin-bottom: 0.5rem;
         }
 
@@ -365,15 +352,16 @@
         /* Spotify Bottom Player Container */
         .spotify-container {
             max-width: 800px;
-            margin: 2rem auto 0 auto;
+            margin: 3rem auto 0 auto;
             padding: 0 1rem;
             position: relative;
             z-index: 3;
         }
 
         .spotify-container iframe {
-            border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.25);
+            border: 2px solid rgba(255, 255, 255, 0.8);
         }
 
         /* Final Message Section */
@@ -532,13 +520,13 @@
         <p>Every moment spent with you has been magical.You are my wife,my baby,my girlfriend,my better half,my other half,ur my everything Saima ...</p>
     </section>
 
-    <!-- Memory Cards Container with Dedicated Spotify Bars Above Each Card -->
+    <!-- Memory Cards Container with Dedicated Glassmorphism Spotify Bars Above Each Card -->
     <div class="memory-container">
 
-        <!-- Card 1: My Wife (With Track 1 above it) -->
+        <!-- Card 1: My Wife -->
         <div class="memory-card-wrapper">
             <div class="mini-spotify-bar">
-                <iframe style="border-radius:8px" src="https://open.spotify.com/embed/track/7iSWYBp3QGl3eQyv8l40hs?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7iSWYBp3QGl3eQyv8l40hs?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
             <div class="memory-card">
                 <img src="./d1.jpg" alt="My Wife" class="memory-img">
@@ -547,10 +535,10 @@
             </div>
         </div>
 
-        <!-- Card 2: I Love You Saima (With "Can't Help Falling in Love" in Light Pink above it) -->
+        <!-- Card 2: I Love You Saima (Can't Help Falling in Love) -->
         <div class="memory-card-wrapper">
             <div class="mini-spotify-bar light-pink">
-                <iframe style="border-radius:8px" src="https://open.spotify.com/embed/track/77cOt0YCOoZMuPGZ8sfND4?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/77cOt0YCOoZMuPGZ8sfND4?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
             <div class="memory-card">
                 <img src="./d2.jpg" alt="I Love You Saima" class="memory-img">
@@ -559,10 +547,10 @@
             </div>
         </div>
 
-        <!-- Card 3: Pretty Soul (With Track 3 above it) -->
+        <!-- Card 3: Pretty Soul -->
         <div class="memory-card-wrapper">
             <div class="mini-spotify-bar">
-                <iframe style="border-radius:8px" src="https://open.spotify.com/embed/track/1tWaY9Spj1w3cIgVXG3B3r?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1tWaY9Spj1w3cIgVXG3B3r?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
             <div class="memory-card">
                 <img src="./d3.jpg" alt="Pretty Soul" class="memory-img">
@@ -575,7 +563,7 @@
 
     <!-- Main Spotify Track Section -->
     <div class="spotify-container">
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2MRJ3Oqb5yAONPvQyoWnQ9?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe style="border-radius:16px" src="https://open.spotify.com/embed/track/2MRJ3Oqb5yAONPvQyoWnQ9?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
 
     <section class="final-message">
