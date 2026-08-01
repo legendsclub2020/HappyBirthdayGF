@@ -201,14 +201,14 @@
             }
         }
 
-        /* Smooth Screen Fade To White/Pastel */
+        /* Transition Overlay */
         .page-transition-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: #ffd1dc;
+            background: linear-gradient(135deg, #ffd1dc, #e6e6fa, #ffefd5);
             z-index: 10000;
             opacity: 0;
             pointer-events: none;
@@ -259,10 +259,7 @@
         </div>
     </div>
 
-    <!-- Flower Rain Container -->
     <div class="flower-rain-container" id="flowerRain"></div>
-
-    <!-- Smooth Transition Overlay -->
     <div class="page-transition-overlay" id="transitionOverlay"></div>
 
     <script>
@@ -313,18 +310,13 @@
         }
 
         function unlockAnimation() {
-            // Fade out passcode card
             document.getElementById('passcodeCard').classList.add('fade-out');
-
-            // Trigger Flower Rain
             startFlowerRain();
 
-            // After flower rain starts, smoothly fade screen and transition
             setTimeout(() => {
                 document.getElementById('transitionOverlay').classList.add('active');
             }, 1800);
 
-            // Redirect to main page (last.html)
             setTimeout(() => {
                 window.location.href = "last.html";
             }, 2800);
@@ -342,7 +334,7 @@
                 flower.style.left = Math.random() * 100 + 'vw';
                 flower.style.fontSize = (Math.random() * 1.5 + 1.2) + 'rem';
 
-                const duration = Math.random() * 2 + 2; // 2s to 4s speed
+                const duration = Math.random() * 2 + 2;
                 flower.style.setProperty('--fall-duration', duration + 's');
                 flower.style.animationDelay = (Math.random() * 1.5) + 's';
 
@@ -350,7 +342,6 @@
             }
         }
 
-        // Keyboard Support
         document.addEventListener('keydown', (e) => {
             if (e.key >= '0' && e.key <= '9') {
                 pressKey(e.key);
