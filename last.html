@@ -1,32 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome, My Love✨</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <title>Happy Birthday Saima! 💖</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;500;600&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            min-height: 100vh;
+            font-family: 'Quicksand', sans-serif;
             background: linear-gradient(135deg, #ffd1dc 0%, #e6e6fa 25%, #ffefd5 50%, #e6e6fa 75%, #ffd1dc 100%);
             background-size: 400% 400%;
             animation: gradientFlow 15s ease infinite;
-            font-family: 'Quicksand', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            color: #4a4a4a;
-            position: relative;
         }
 
         @keyframes gradientFlow {
@@ -35,213 +24,180 @@
             100% { background-position: 0% 50%; }
         }
 
-        .passcode-card {
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(15px);
-            padding: 2.5rem 2rem;
-            border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.25);
-            text-align: center;
-            width: 90%;
-            max-width: 360px;
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            z-index: 10;
-            position: relative;
-            transition: opacity 0.8s ease, transform 0.8s ease;
+        .font-dancing {
+            font-family: 'Dancing Script', cursive;
         }
 
-        .passcode-card.fade-out {
-            opacity: 0;
-            transform: scale(0.85);
-            pointer-events: none;
+        /* Glassmorphism card effects */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
         }
 
-        .lock-icon { font-size: 2.8rem; margin-bottom: 0.5rem; }
-        .passcode-title { font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: #ff69b4; margin-bottom: 0.2rem; }
-        .passcode-subtitle { font-size: 0.95rem; color: #888; margin-bottom: 1.5rem; font-style: italic; }
-
-        .dots-container { display: flex; justify-content: center; gap: 12px; margin-bottom: 2rem; }
-        .dot { width: 14px; height: 14px; border: 2px solid #ff69b4; border-radius: 50%; transition: all 0.2s ease; }
-        .dot.filled { background-color: #ff69b4; transform: scale(1.2); }
-
-        .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 260px; margin: 0 auto; }
-        .key-btn {
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid rgba(255, 105, 180, 0.25);
-            color: #ff69b4;
-            font-size: 1.5rem;
-            font-weight: 600;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            user-select: none;
-        }
-        .key-btn:active { transform: scale(0.92); background: #ff69b4; color: white; }
-        .key-btn.empty { visibility: hidden; }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            20%, 60% { transform: translateX(-10px); }
-            40%, 80% { transform: translateX(10px); }
-        }
-        .shake { animation: shake 0.4s ease-in-out; }
-
-        .flower-shower-container {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            pointer-events: none;
-            z-index: 9999;
-            overflow: hidden;
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
         }
 
-        .page-transition-overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background: linear-gradient(135deg, #ffd1dc, #ffefd5, #e6e6fa);
-            z-index: 10000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 1.2s ease-in-out;
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
         }
-        .page-transition-overlay.active { opacity: 1; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 209, 220, 0.3);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(244, 114, 182, 0.5);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(244, 114, 182, 0.8);
+        }
     </style>
 </head>
+<body class="min-h-screen text-gray-800 relative overflow-x-hidden pb-12">
 
-<body>
+    <!-- Header Section -->
+    <header class="text-center pt-12 pb-6 px-4">
+        <h1 class="font-dancing text-5xl md:text-7xl text-pink-600 font-bold drop-shadow-md mb-2">
+            Happy Birthday Saima! 🎉
+        </h1>
+        <p class="text-lg md:text-xl text-pink-500 font-semibold tracking-wide">
+            Wishing you a day as wonderful as you are! ✨
+        </p>
+    </header>
 
-    <div class="passcode-card" id="passcodeCard">
-        <div class="lock-icon">🔒</div>
-        <h2 class="passcode-title">Welcome, You</h2>
-        <p class="passcode-subtitle">a little secret...</p>
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 space-y-12">
 
-        <div class="dots-container">
-            <div class="dot" id="dot-0"></div>
-            <div class="dot" id="dot-1"></div>
-            <div class="dot" id="dot-2"></div>
-            <div class="dot" id="dot-3"></div>
-        </div>
+        <!-- Photo Memories Grid -->
+        <section class="glass-card rounded-3xl p-6 md:p-8 shadow-xl">
+            <h2 class="font-dancing text-3xl md:text-4xl text-pink-600 text-center mb-6 flex items-center justify-center gap-2">
+                <i data-lucide="heart" class="fill-pink-500 text-pink-500"></i> Memories Together <i data-lucide="heart" class="fill-pink-500 text-pink-500"></i>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Memory 1 -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-md transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-white/60 p-2">
+                    <div class="overflow-hidden rounded-xl h-64">
+                        <img src="./d1.jpg" alt="Memory 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-3 text-center">
+                        <p class="font-semibold text-pink-600">Pure Joy ✨</p>
+                    </div>
+                </div>
 
-        <div class="keypad">
-            <button class="key-btn" onclick="pressKey('1')">1</button>
-            <button class="key-btn" onclick="pressKey('2')">2</button>
-            <button class="key-btn" onclick="pressKey('3')">3</button>
-            <button class="key-btn" onclick="pressKey('4')">4</button>
-            <button class="key-btn" onclick="pressKey('5')">5</button>
-            <button class="key-btn" onclick="pressKey('6')">6</button>
-            <button class="key-btn" onclick="pressKey('7')">7</button>
-            <button class="key-btn" onclick="pressKey('8')">8</button>
-            <button class="key-btn" onclick="pressKey('9')">9</button>
-            <button class="key-btn empty"></button>
-            <button class="key-btn" onclick="pressKey('0')">0</button>
-            <button class="key-btn" onclick="deleteKey()">⌫</button>
-        </div>
-    </div>
+                <!-- Memory 2 -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-md transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-white/60 p-2">
+                    <div class="overflow-hidden rounded-xl h-64">
+                        <img src="./d2.jpg" alt="Memory 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-3 text-center">
+                        <p class="font-semibold text-pink-600">Unforgettable Day 🌸</p>
+                    </div>
+                </div>
 
-    <div class="flower-shower-container" id="flowerContainer"></div>
-    <div class="page-transition-overlay" id="transitionOverlay"></div>
+                <!-- Memory 3 -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-md transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-white/60 p-2">
+                    <div class="overflow-hidden rounded-xl h-64">
+                        <img src="./d3.jpg" alt="Memory 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-3 text-center">
+                        <p class="font-semibold text-pink-600">Always Smiling 😊</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Interactive Bouquet Section -->
+        <section class="glass-card rounded-3xl p-6 md:p-8 shadow-xl text-center relative overflow-hidden">
+            <h2 class="font-dancing text-3xl md:text-4xl text-pink-600 mb-4">
+                A Little Gift For You 💐
+            </h2>
+            <p class="text-gray-600 mb-6">Click the button below to receive your special birthday flowers!</p>
+            
+            <button id="bouquetBtn" class="bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-2 mx-auto">
+                <i data-lucide="gift"></i> Claim Your Flowers!
+            </button>
+
+            <!-- Hidden Bouquet Image -->
+            <div id="bouquetContainer" class="hidden mt-6 transition-all duration-700 ease-out transform scale-90 opacity-0">
+                <div class="relative inline-block">
+                    <img src="./bouquet.jpg" alt="Flower Bouquet" class="max-w-xs md:max-w-sm rounded-2xl shadow-2xl mx-auto border-4 border-white/80 animate-float">
+                    <div class="mt-4 bg-white/80 backdrop-blur-sm p-3 rounded-xl shadow-md max-w-xs mx-auto">
+                        <p class="text-pink-600 font-semibold italic">"May your year bloom as beautifully as these flowers!" 🌸</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spotify & Special Message Section -->
+        <section class="glass-card rounded-3xl p-6 md:p-8 shadow-xl">
+            <h2 class="font-dancing text-3xl md:text-4xl text-pink-600 text-center mb-6 flex items-center justify-center gap-2">
+                <i data-lucide="music" class="text-pink-500"></i> Soundtrack for Your Special Day <i data-lucide="sparkles" class="text-yellow-400"></i>
+            </h2>
+
+            <!-- Spotify Embed Container -->
+            <div class="w-full max-w-lg mx-auto rounded-2xl overflow-hidden shadow-lg mb-8 border-2 border-pink-200">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2bfL9vQv0kOQ9Y3A24O1aC?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+
+            <!-- Heartfelt Text Message -->
+            <div class="bg-white/70 backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-inner border border-pink-100 max-w-2xl mx-auto space-y-4 text-gray-700 leading-relaxed">
+                <p class="first-letter:text-3xl first-letter:font-bold first-letter:text-pink-500">
+                    Saima, on your birthday, I want to remind you how incredibly special you are. Bringing you into my life has brought so much light, warmth, and laughter. Every single memory we've made together is something I treasure deeply.
+                </p>
+                <p>
+                    I hope this next year brings you closer to all your big dreams, surrounds you with endless happiness, and fills your days with genuine peace. Never stop being the bright, kind, and beautiful soul that you are.
+                </p>
+                <p class="text-right font-dancing text-2xl text-pink-600 font-bold pt-2">
+                    Happy Birthday once again! 💕
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center mt-12 text-pink-400 font-medium text-sm">
+        Made with ❤️ for Saima's Birthday
+    </footer>
+
+    <!-- JavaScript logic -->
     <script>
-        const CORRECT_PIN = "0407";
-        let enteredPin = "";
+        // Initialize Lucide Icons
+        lucide.createIcons();
 
-        function pressKey(num) {
-            if (enteredPin.length < 4) {
-                enteredPin += num;
-                updateDots();
+        // Bouquet Toggle Logic
+        const bouquetBtn = document.getElementById('bouquetBtn');
+        const bouquetContainer = document.getElementById('bouquetContainer');
 
-                if (enteredPin.length === 4) {
-                    setTimeout(checkPin, 200);
-                }
-            }
-        }
-
-        function deleteKey() {
-            if (enteredPin.length > 0) {
-                enteredPin = enteredPin.slice(0, -1);
-                updateDots();
-            }
-        }
-
-        function updateDots() {
-            for (let i = 0; i < 4; i++) {
-                const dot = document.getElementById(`dot-${i}`);
-                if (i < enteredPin.length) {
-                    dot.classList.add('filled');
-                } else {
-                    dot.classList.remove('filled');
-                }
-            }
-        }
-
-        function checkPin() {
-            if (enteredPin === CORRECT_PIN) {
-                unlockAnimation();
-            } else {
-                const card = document.getElementById('passcodeCard');
-                card.classList.add('shake');
+        bouquetBtn.addEventListener('click', () => {
+            if (bouquetContainer.classList.contains('hidden')) {
+                bouquetContainer.classList.remove('hidden');
                 setTimeout(() => {
-                    card.classList.remove('shake');
-                    enteredPin = "";
-                    updateDots();
-                }, 400);
-            }
-        }
-
-        function unlockAnimation() {
-            document.getElementById('passcodeCard').classList.add('fade-out');
-            triggerBigFlowerShower();
-
-            setTimeout(() => {
-                document.getElementById('transitionOverlay').classList.add('active');
-            }, 2000);
-
-            // NOW REDIRECTS TO CAUSE.HTML
-            setTimeout(() => {
-                window.location.href = "cause.html";
-            }, 3000);
-        }
-
-        function triggerBigFlowerShower() {
-            const container = document.getElementById('flowerContainer');
-            const flowerTypes = ['🌸', '🌺', '🌷', '🌹', '🪷', '✨', '💖', '💐', '🍃'];
-
-            for (let i = 0; i < 120; i++) {
-                const flower = document.createElement('div');
-                flower.innerText = flowerTypes[Math.floor(Math.random() * flowerTypes.length)];
-                flower.style.position = 'absolute';
-                flower.style.top = '-60px';
-                flower.style.left = Math.random() * 100 + 'vw';
-                flower.style.fontSize = (Math.random() * 2 + 1.5) + 'rem';
-                flower.style.userSelect = 'none';
-
-                container.appendChild(flower);
-
-                gsap.to(flower, {
-                    y: '110vh',
-                    x: (Math.random() - 0.5) * 200,
-                    rotation: Math.random() * 720,
-                    duration: Math.random() * 2.5 + 2,
-                    delay: Math.random() * 1.2,
-                    ease: "power1.out"
-                });
-            }
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key >= '0' && e.key <= '9') {
-                pressKey(e.key);
-            } else if (e.key === 'Backspace') {
-                deleteKey();
+                    bouquetContainer.classList.remove('scale-90', 'opacity-0');
+                    bouquetContainer.classList.add('scale-100', 'opacity-100');
+                }, 50);
+                bouquetBtn.innerHTML = `<i data-lucide="heart" class="fill-white"></i> Enjoy Your Bouquet!`;
+                lucide.createIcons();
+            } else {
+                bouquetContainer.classList.remove('scale-100', 'opacity-100');
+                bouquetContainer.classList.add('scale-90', 'opacity-0');
+                setTimeout(() => {
+                    bouquetContainer.classList.add('hidden');
+                }, 500);
+                bouquetBtn.innerHTML = `<i data-lucide="gift"></i> Claim Your Flowers!`;
+                lucide.createIcons();
             }
         });
     </script>
 </body>
-
 </html>
