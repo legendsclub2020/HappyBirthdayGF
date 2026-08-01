@@ -30,17 +30,9 @@
         }
 
         @keyframes gradientFlow {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* Top Bar & Heart Button */
@@ -150,60 +142,6 @@
             color: #ff69b4;
         }
 
-        /* Enhanced Sparkle Effect */
-        .magic-sparkles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .sparkle {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background-color: white;
-            animation: twinkle var(--duration, 4s) ease-in-out infinite;
-            opacity: 0;
-        }
-
-        @keyframes twinkle {
-            0%, 100% {
-                opacity: 0;
-                transform: scale(0.5);
-            }
-            50% {
-                opacity: 0.8;
-                transform: scale(1);
-            }
-        }
-
-        .magic-sparkles::before,
-        .magic-sparkles::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: radial-gradient(circle, white 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: sparkleLayer 8s linear infinite;
-            opacity: 0.5;
-        }
-
-        .magic-sparkles::after {
-            animation-delay: -4s;
-            transform: rotate(45deg);
-        }
-
-        @keyframes sparkleLayer {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-50px); }
-        }
-
         /* Floating Hearts */
         .floating-hearts {
             position: fixed;
@@ -217,16 +155,14 @@
             position: absolute;
             font-size: 1.5rem;
             color: rgba(255, 105, 180, 0.6);
-            animation: floatHeart var(--float-duration, 6s) ease-in-out infinite;
-            animation-delay: var(--delay, 0s);
+            animation: floatHeart 6s ease-in-out infinite;
         }
 
         @keyframes floatHeart {
             0% { transform: translate(0, 100vh) rotate(0deg); }
-            100% { transform: translate(var(--translate-x, 0), -100vh) rotate(360deg); }
+            100% { transform: translate(30px, -100vh) rotate(360deg); }
         }
 
-        /* Welcome Section */
         .welcome {
             text-align: center;
             padding: 2rem 2rem 4rem 2rem;
@@ -239,7 +175,6 @@
             font-size: 4rem;
             color: #ff69b4;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            animation: fadeInScale 2s ease;
         }
 
         .welcome p {
@@ -247,10 +182,8 @@
             max-width: 600px;
             margin: 1.5rem auto;
             line-height: 1.6;
-            animation: fadeIn 2s ease 0.5s both;
         }
 
-        /* Memory Cards */
         .memory-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -267,14 +200,11 @@
             border-radius: 20px;
             padding: 1.5rem;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
+            transition: all 0.5s ease;
         }
 
         .memory-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px);
         }
 
         .memory-img {
@@ -283,11 +213,6 @@
             object-fit: cover;
             border-radius: 15px;
             margin-bottom: 1rem;
-            transition: transform 0.5s ease;
-        }
-
-        .memory-card:hover .memory-img {
-            transform: scale(1.05);
         }
 
         .memory-date {
@@ -297,13 +222,6 @@
             margin-bottom: 0.5rem;
         }
 
-        .memory-caption {
-            font-size: 1rem;
-            line-height: 1.5;
-            color: #666;
-        }
-
-        /* Spotify Player */
         .spotify-container {
             max-width: 600px;
             margin: 3rem auto 1rem auto;
@@ -318,7 +236,6 @@
             border-radius: 12px;
         }
 
-        /* Final Message Section */
         .final-message {
             text-align: center;
             padding: 4rem 2rem;
@@ -334,19 +251,6 @@
             font-size: 3rem;
             color: #ff69b4;
             margin-bottom: 2rem;
-            animation: heartbeat 2s infinite;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        .final-message p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            line-height: 1.8;
         }
 
         .goodbye-btn {
@@ -359,58 +263,18 @@
             border-radius: 50px;
             cursor: pointer;
             text-decoration: none;
-            transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
-            animation: float 3s infinite ease-in-out;
-        }
-
-        .goodbye-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.6);
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* Animations */
-        @keyframes fadeInScale {
-            0% { opacity: 0; transform: scale(0.8); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 12px; }
-        ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.4); }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(45deg, #ff69b4, #da70d6);
-            border-radius: 6px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .welcome h1 { font-size: 3rem; }
-            .memory-container { grid-template-columns: 1fr; }
-            .final-message h2 { font-size: 2.5rem; }
-            .top-bar { padding: 1rem; }
         }
     </style>
 </head>
 
 <body>
-    <div class="magic-sparkles"></div>
     <div class="floating-hearts">
-        <div class="heart" style="--float-duration: 6s; --delay: 0s; --translate-x: 20px;">💝</div>
-        <div class="heart" style="--float-duration: 8s; --delay: 1s; --translate-x: -30px;">💖</div>
-        <div class="heart" style="--float-duration: 7s; --delay: 2s; --translate-x: 40px;">💗</div>
-        <div class="heart" style="--float-duration: 9s; --delay: 3s; --translate-x: -20px;">💓</div>
-        <div class="heart" style="--float-duration: 5s; --delay: 4s; --translate-x: 30px;">💕</div>
+        <div class="heart" style="left: 10%;">💝</div>
+        <div class="heart" style="left: 30%;">💖</div>
+        <div class="heart" style="left: 50%;">💗</div>
+        <div class="heart" style="left: 70%;">💓</div>
+        <div class="heart" style="left: 90%;">💕</div>
     </div>
 
     <!-- Heart Button at Top -->
@@ -432,24 +296,24 @@
 
     <section class="welcome">
         <h1>Happy Birthday My Wife</h1>
-        <p>Every moment I have spend with you has been magical.You are my wife,my other half,my better half,my gf and my baby you are my everything ...</p>
+        <p>Every moment I have spent with you has been magical. You are my wife, my other half, my better half, my gf and my baby you are my everything ...</p>
     </section>
 
     <div class="memory-container">
         <div class="memory-card">
-            <img src="./d1.jpg" alt="First Date" class="memory-img">
+            <img src="./d1.jpg" alt="Memory 1" class="memory-img">
             <div class="memory-date">Her Smile Says It All</div>
-            <div class="memory-caption">You’re truly the sweetest girls I know, and I feel lucky to have a partner like you.❤️</div>
+            <p>You’re truly the sweetest girl I know, and I feel lucky to have a partner like you.❤️</p>
         </div>
         <div class="memory-card">
-            <img src="./d2.jpg" alt="Beach Day" class="memory-img">
+            <img src="./d2.jpg" alt="Memory 2" class="memory-img">
             <div class="memory-date">My Wife</div>
-            <div class="memory-caption">May your journey ahead be filled with happiness, success, and endless smiles.😊💕</div>
+            <p>May your journey ahead be filled with happiness, success, and endless smiles.😊💕</p>
         </div>
         <div class="memory-card">
-            <img src="./d3.jpg" alt="Movie Night" class="memory-img">
-            <div class="memory-date">Pretty Soul,Pretty Face You are js a pretty girl</div>
-            <div class="memory-caption">Keep being the amazing person you are—you make every moment brighter.🌸💖</div>
+            <img src="./d3.jpg" alt="Memory 3" class="memory-img">
+            <div class="memory-date">Pretty Soul</div>
+            <p>Keep being the amazing person you are—you make every moment brighter.🌸💖</p>
         </div>
     </div>
 
@@ -469,14 +333,9 @@
 
     <section class="final-message">
         <h2>Thank You for being my Girlfriend</h2>
-        <p>HAPPY BIRTHDAY SAIMA!!!! 🎂❤️💫<br>
-            ou are so much more than just my girlfriend—you are my wife, my other half, my better half, my ultimate comfort zone, my heart, and my absolute everything. I love you, Saima.
-
-I hope today is as amazing as you are, but even more than that, I hope your whole life is filled with joy, peace, and endless achievements. May you grow into the most successful, happiest woman in the world.<br>
-            On your birthday, I just wish for endless happiness, love, and success to come your way.🌸</p>
-        <p>You deserve all the joy in the world—keep shining and spreading your beautiful energy.✨Thank you for being in my life and for being my girlfriend. I will be forever grateful to have you by my side.
-
-Many, many happy returns of the day, my love. I love you so, so, so much! ❤️✨</p>
+        <p>HAPPY BIRTHDAY SAIMA!!!! 🎂❤️💫<br><br>
+        You are so much more than just my girlfriend—you are my wife, my other half, my better half, my ultimate comfort zone, my heart, and my absolute everything. I love you, Saima. Many, many happy returns of the day, my love! ❤️✨</p>
+        <br>
         <a href="#" class="goodbye-btn">I Love You Saima💝</a>
     </section>
 
