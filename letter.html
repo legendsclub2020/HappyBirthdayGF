@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A Letter For Saima 📜</title>
+  <title>For My Love Saima ❤️</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;500;600;700&display=swap');
 
@@ -15,197 +15,159 @@
     }
 
     body {
-      background: linear-gradient(135deg,
-          #ffd1dc 0%,
-          #e6e6fa 25%,
-          #ffefd5 50%,
-          #e6e6fa 75%,
-          #ffd1dc 100%);
-      background-size: 400% 400%;
-      animation: gradientFlow 15s ease infinite;
-      color: #4a4a4a;
+      background: linear-gradient(135deg, #ffd1dc 0%, #e6e6fa 50%, #ffd1dc 100%);
+      color: #590d22;
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      padding: 2rem 1rem;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    @keyframes gradientFlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Subtle Gentle Petal Falling Animation */
-    .petal {
-      position: fixed;
-      top: -10%;
-      font-size: 1.4rem;
-      pointer-events: none;
-      z-index: 1;
-      animation: fall linear forwards;
-      opacity: 0.7;
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0.8;
-      }
-      100% {
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    .back-btn {
-      align-self: flex-start;
-      margin-bottom: 1.5rem;
-      background: rgba(255, 255, 255, 0.9);
-      border: 2px solid #ffccd5;
-      padding: 0.6rem 1.4rem;
-      border-radius: 25px;
-      color: #ff4d6d;
-      text-decoration: none;
-      font-weight: 600;
-      box-shadow: 0 4px 12px rgba(255, 77, 109, 0.15);
-      transition: all 0.3s ease;
-      z-index: 10;
-    }
-
-    .back-btn:hover {
-      background: #ff4d6d;
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(255, 77, 109, 0.3);
-    }
-
-    .letter-card {
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(10px);
-      border-radius: 25px;
-      padding: 3rem 2.5rem;
-      max-width: 800px;
-      width: 100%;
-      box-shadow: 0 15px 35px rgba(255, 105, 180, 0.25);
-      border: 2px solid #ffd1dc;
-      text-align: left;
-      margin-top: 0.5rem;
-      margin-bottom: 3rem;
-      z-index: 5;
-    }
-
-    .letter-card h1 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 3.2rem;
-      color: #ff69b4;
-      margin-bottom: 2rem;
+      padding: 2.5rem 1rem;
       text-align: center;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
     }
 
-    .letter-content {
-      font-size: 1.1rem;
-      line-height: 1.85;
-      color: #4a4a4a;
-      white-space: pre-line;
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3.5rem;
+      color: #ff4d6d;
+      margin-bottom: 0.5rem;
+    }
+
+    p.subtitle {
+      font-size: 1.15rem;
+      color: #800f2f;
       margin-bottom: 2.5rem;
     }
 
-    .letter-content p {
-      margin-bottom: 1.4rem;
+    .nav-buttons {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 3rem;
     }
 
-    .letter-footer {
+    .nav-btn {
+      background: #ffffff;
+      border: 2px solid #ffccd5;
+      padding: 0.8rem 1.8rem;
+      border-radius: 30px;
+      color: #ff4d6d;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      box-shadow: 0 6px 18px rgba(255, 77, 109, 0.15);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-btn:hover {
+      background: #ff4d6d;
+      color: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 22px rgba(255, 77, 109, 0.3);
+    }
+
+    .music-section {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 25px;
+      padding: 2.5rem 2rem;
+      max-width: 650px;
+      width: 100%;
+      box-shadow: 0 12px 30px rgba(255, 77, 109, 0.2);
+      border: 2px solid #ffd1dc;
+      margin-bottom: 3rem;
+    }
+
+    .music-section h2 {
       font-family: 'Dancing Script', cursive;
-      font-size: 2.3rem;
-      color: #ff69b4;
-      text-align: center;
+      font-size: 2.4rem;
+      color: #ff4d6d;
+      margin-bottom: 1.5rem;
+    }
+
+    .song-card {
+      background: #fff0f3;
+      padding: 1.2rem;
+      border-radius: 18px;
+      margin-bottom: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      border: 1px solid #ffccd5;
+    }
+
+    .song-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #590d22;
+    }
+
+    audio {
+      width: 100%;
+      height: 40px;
+    }
+
+    /* Beautiful Personal Note Styling */
+    .wommoth-note {
+      background: rgba(255, 255, 255, 0.85);
+      border: 2px dashed #ff8fa3;
+      border-radius: 20px;
+      padding: 1.8rem 2rem;
+      max-width: 600px;
+      width: 100%;
       margin-top: 1rem;
+      box-shadow: 0 8px 20px rgba(255, 143, 163, 0.15);
     }
 
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-    ::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.4);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(45deg, #ff69b4, #da70d6);
-      border-radius: 6px;
+    .wommoth-note p {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.85rem;
+      color: #ff4d6d;
+      line-height: 1.6;
     }
 
-    @media (max-width: 768px) {
-      .letter-card {
-        padding: 2rem 1.5rem;
-      }
-      .letter-card h1 {
-        font-size: 2.5rem;
-      }
-      .letter-content {
-        font-size: 1.02rem;
-      }
+    @media (max-width: 600px) {
+      h1 { font-size: 2.8rem; }
+      .wommoth-note p { font-size: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <a href="last.html" class="back-btn">← Back to Songs</a>
+  <h1>For Saima, My Everything 💖</h1>
+  <p class="subtitle">Explore your birthday letters & listen to our favorite tunes</p>
 
-  <div class="letter-card">
-    <h1>Happy Birthday My Love 📜❤️</h1>
+  <div class="nav-buttons">
+    <a href="letter.html" class="nav-btn">📜 Read My Main Letter</a>
+    <a href="open-when.html" class="nav-btn">💌 Open When Envelopes</a>
+  </div>
 
-    <div class="letter-content">
-      <p>Happy birthday my wife, my baby, my other half, my better half, my gf, my soulmate, my partner and the owner of my heart,</p>
+  <div class="music-section">
+    <h2>Songs For You 🎶</h2>
 
-      <p>I wish u the happiest birthday ever someone have wished u earlier, Ik I havent gifted u smth so special or exclusive even expensive in this birthday but I gifted u my heart which will be gifted to none except u my heart has only one person that is u and that will be u. Yk i rly dnt know what to say or where to start u arent js my gf saima. Ur a literal star in my dark sky, ur a candle in my dark room, ur the red blood my heart beats for, ur the oxygen my lungs take, ur the energy for which i can work for. In this 2 month rltn I didnt felt this much happier, i didnt smile this much, i didnt care or even miss someone like u and rly thank u for that. I will be forever grateful to u my love. Ur not js a girl ur my wife with whom i want to live the rest of my life, with whom i want to build a home, with whom i want to have kids and with whom i want to die.</p>
-
-      <p>First of all, as a birhday wish Happy Birthday Saima, I hope ur day goes well and I hope like this for every birthday i can wish u and it become a regular occasion of my life. Not only for this everyday, I want to wish u like this till the last birthday u will have, I want to stick with u and let u know every year how much u meant to me, how much u have done toward me, how much u love me, how much care and grateful i am for all ur love. I promise saima like this I will wish u Happy Birthday for the rest of my life and I hope our rltn doesnt break and it will be forever like this. Yk saima I am rly happy u exist not js being happy I am js grateful to Allah he has created someone like u I am grateful toward unc and aunt to give birth to u. They havent js give birth to a girl, they have gifted me my whole world.</p>
-
-      <p>I will be forever grateful to them for giving birth to the sweetest person i know. I am rly grateful u exist.</p>
-
-      <p>Secondly, thank u saima for all the genuine love, care, affection, kindness and everything u have shown towards me. 2 months ago, I didnt thought I had to live or build a family. I js wanted to die faster and leave this world. But u have given me an aim and a goal. Now I want a family with u, kids with u and a home with u. For me home isnt a building build with bricks it is a place where u are there. Rly thank u saima for being my home, being my comfort zone, listening to all my worries, listening to all my struggles and comforting me. Ur not js a girl ur my comfort zone saima. Rly thank u saima. I can say thank u thousands times everyday but I would still feel it isnt enough as not only u become my gf, but u have given me a new life where i want to live and want a future. I love u saima and thank u agn for all this love and care. Idk how to repay this but I promise I will make u my wife and do everything I can to make u the happiest girl alive and to gift u the happiest life i can and u can proudly say thats my husband.</p>
-
-      <p>Thirdly, I want to give comfort to all ur bad moments and the lowest point of ur life. Idk how to give comfort abt ur self harm. But I will say one thing yk outer pain js cover the inner one it js work as a hiding method inner pain cant be solved with this. So please stay away from it. From now on if any time u feel i want to cut my hand I want to harm myself js tell me one time I will give u mine and you can do wtv u want i wont stop u and i will never say anything tumr icca moto tumi amr hat kato tao i dont want any scar in the prettiest hands of my wife. I want to bear all ur sadness and js turn it into love and give it to u. Ik I amnt a magician but i pray to Allah to give me ability to disappear all ur worries, sadness and all the sad thing ever happen to u and will happen and turn to love. I want u as the happiest girl alive Saima. I love u Saima, I rly do, I want u to smile everyday Idc abt someone else but if i see u sad i cant be happy I want u to be happy and i promise i will do everything i can to lift ur mood and make u happy agn. I request u from now on if ur mood is off or u are feeling kindly tell me the truth when i ask u as i rly know when my wifes mood is off or she is sad. And porer bar theke if u want to self harm do it with my hand. Ami jodi khali dekhi saima tumi abr hat katco i wont talk to u kintu arrrr</p>
-
-      <p>Lastly, I love u saima I rly do Idk how can I prove this but I can say ur the first person who have seen my soft side, ur the first person ever to see this and experience this, yk safia was js a showoff to my frds i wanted to make it public and be cool but for u i have so much respect and love towards u i cant express. Amdr rltn a ami bolci to keep it private thats how i know i love u. I dont like to talk but I rly love talking to u thats how ik i love u. I hate calls but ami hours after hours spend time with u talking in call thats how ik i love u. I rly dnt miss someone but ami tumake dine er 24/7 miss kori. I never ever crave someones presence like urs. I never ever felt better karo sathe ur the first person where i feel comfort and want to see thats how ik i love u. I hate peoples like talking with them and like being alone age but now i love talking to u sarakhon i miss u every time and ami jodi partam sarakhon tumr sathe golpo kortam, ador kortam thats how i know i love u. Yk saima I cant be ur first love but i rly want to be ur last I want to be not js a bf but to be ur husband where i will do everything i can to keep u happy.</p>
-
-      <p>Saima I rly want to be my wife Ik i am so young but in my future i dnt see anything except u my love. I wanna marry u and build a life together. Pls dnt leave me saima. I need u, i cant live without u, i cant stay without u I rly love u saima I rly do. I hope we dnt face smth bad in our rltn and it will be permanent as husband and wife. Please dnt leave me.</p>
-
-      <p>Happy birthday Saima, I hope ur days go well and I will try to make ur day go well I love u saima Happy Birthday baby. I promise I will wish u like this in every birthday till I die. I love u saima. Lots of love and kissesss mwahhhhh 💕💋✨</p>
+    <div class="song-card">
+      <div class="song-title">🎵 Song 1 - Our Special Track</div>
+      <audio controls>
+        <source src="song1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
     </div>
 
-    <div class="letter-footer">
-      Forever & Always Yours 💖
+    <div class="song-card">
+      <div class="song-title">🎵 Song 2 - Comfort Melodies</div>
+      <audio controls>
+        <source src="song2.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
     </div>
   </div>
 
-  <!-- Soft Petal Shower Script (Continuous, Low-Amount) -->
-  <script>
-    function createSoftPetal() {
-      const flowers = ['🌸', '🌺', '🌷', '✨', '💐'];
-      const petal = document.createElement('div');
-      petal.classList.add('petal');
-      petal.innerText = flowers[Math.floor(Math.random() * flowers.length)];
-      petal.style.left = Math.random() * 95 + 'vw';
-      
-      // Slower animation speed so it's peaceful while reading
-      const duration = Math.random() * 4 + 6; 
-      petal.style.animationDuration = duration + 's';
-      
-      document.body.appendChild(petal);
+  <!-- Special Personal Note at the bottom -->
+  <div class="wommoth-note">
+    <p>Made by ur wommoth, time - 3 days ❤️<br>Hat betha hoye gese babe ato code lekhte, I love u so much, I hope u like it! ✨</p>
+  </div>
 
-      setTimeout(() => {
-        petal.remove();
-      }, duration * 1000);
-    }
-
-    // Spawns 1 soft petal every 600ms so it doesn't clutter or distract
-    setInterval(createSoftPetal, 600);
-  </script>
 </body>
 </html>
