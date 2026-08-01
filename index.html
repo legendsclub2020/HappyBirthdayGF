@@ -1,20 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday</title>
+    <title>Welcome, My Love✨</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg,
+                    #ffd1dc 0%,
+                    #e6e6fa 25%,
+                    #ffefd5 50%,
+                    #e6e6fa 75%,
+                    #ffd1dc 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #4a4a4a;
+            position: relative;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Passcode Card */
+        .passcode-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(15px);
+            padding: 2.5rem 2rem;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.25);
+            text-align: center;
+            width: 90%;
+            max-width: 360px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            z-index: 10;
+            position: relative;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .passcode-card.fade-out {
+            opacity: 0;
+            transform: scale(0.85);
+            pointer-events: none;
+        }
+
+        .lock-icon {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .passcode-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #ff69b4;
+            margin-bottom: 0.2rem;
+        }
+
+        .passcode-subtitle {
+            font-size: 0.95rem;
+            color: #888;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        /* Dots indicator */
+        .dots-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .dot {
+            width: 14px;
+            height: 14px;
+            border: 2px solid #ff69b4;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .dot.filled {
+            background-color: #ff69b4;
+            transform: scale(1.2);
+        }
+
+        /* Keypad */
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 260px;
+            margin: 0 auto;
+        }
+
+        .key-btn {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(255, 105, 180, 0.25);
+            color: #ff69b4;
+            font-size: 1.5rem;
+            font-weight: 600;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            user-select: none;
+        }
+
+        .key-btn:active {
+            transform: scale(0.92);
+            background: #ff69b4;
+            color: white;
+        }
+
+        .key-btn.empty {
+            visibility: hidden;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
+        }
+
+        .shake {
+            animation: shake 0.4s ease-in-out;
+        }
+
+        /* Full Screen Flower Shower Container */
+        .flower-shower-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        /* Transition Overlay */
+        .page-transition-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #ffd1dc, #ffefd5, #e6e6fa);
+            z-index: 10000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        .page-transition-overlay.active {
+            opacity: 1;
+        }
+    </style>
 </head>
+
 <body>
-    <div class="cursor"></div>
-    <div class="container">
-        <h1>Happy Birthday Saima💗</h1>
-        <div class="greeting"></div>
-        <button class="cta-button">Click to see a magic 💕</button>
+
+    <div class="passcode-card" id="passcodeCard">
+        <div class="lock-icon">🔒</div>
+        <h2 class="passcode-title">Welcome, You</h2>
+        <p class="passcode-subtitle">a little secret...</p>
+
+        <div class="dots-container">
+            <div class="dot" id="dot-0"></div>
+            <div class="dot" id="dot-1"></div>
+            <div class="dot" id="dot-2"></div>
+            <div class="dot" id="dot-3"></div>
+        </div>
+
+        <div class="keypad">
+            <button class="key-btn" onclick="pressKey('1')">1</button>
+            <button class="key-btn" onclick="pressKey('2')">2</button>
+            <button class="key-btn" onclick="pressKey('3')">3</button>
+            <button class="key-btn" onclick="pressKey('4')">4</button>
+            <button class="key-btn" onclick="pressKey('5')">5</button>
+            <button class="key-btn" onclick="pressKey('6')">6</button>
+            <button class="key-btn" onclick="pressKey('7')">7</button>
+            <button class="key-btn" onclick="pressKey('8')">8</button>
+            <button class="key-btn" onclick="pressKey('9')">9</button>
+            <button class="key-btn empty"></button>
+            <button class="key-btn" onclick="pressKey('0')">0</button>
+            <button class="key-btn" onclick="deleteKey()">⌫</button>
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <div class="flower-shower-container" id="flowerContainer"></div>
+    <div class="page-transition-overlay" id="transitionOverlay"></div>
+
+    <script>
+        const CORRECT_PIN = "0407";
+        let enteredPin = "";
+
+        function pressKey(num) {
+            if (enteredPin.length < 4) {
+                enteredPin += num;
+                updateDots();
+
+                if (enteredPin.length === 4) {
+                    setTimeout(checkPin, 200);
+                }
+            }
+        }
+
+        function deleteKey() {
+            if (enteredPin.length > 0) {
+                enteredPin = enteredPin.slice(0, -1);
+                updateDots();
+            }
+        }
+
+        function updateDots() {
+            for (let i = 0; i < 4; i++) {
+                const dot = document.getElementById(`dot-${i}`);
+                if (i < enteredPin.length) {
+                    dot.classList.add('filled');
+                } else {
+                    dot.classList.remove('filled');
+                }
+            }
+        }
+
+        function checkPin() {
+            if (enteredPin === CORRECT_PIN) {
+                unlockAnimation();
+            } else {
+                const card = document.getElementById('passcodeCard');
+                card.classList.add('shake');
+                setTimeout(() => {
+                    card.classList.remove('shake');
+                    enteredPin = "";
+                    updateDots();
+                }, 400);
+            }
+        }
+
+        function unlockAnimation() {
+            document.getElementById('passcodeCard').classList.add('fade-out');
+            triggerBigFlowerShower();
+
+            setTimeout(() => {
+                document.getElementById('transitionOverlay').classList.add('active');
+            }, 2000);
+
+            setTimeout(() => {
+                window.location.href = "last.html";
+            }, 3000);
+        }
+
+        function triggerBigFlowerShower() {
+            const container = document.getElementById('flowerContainer');
+            const flowerTypes = ['🌸', '🌺', '🌷', '🌹', '🪷', '✨', '💖', '💐', '🍃'];
+
+            for (let i = 0; i < 120; i++) {
+                const flower = document.createElement('div');
+                flower.innerText = flowerTypes[Math.floor(Math.random() * flowerTypes.length)];
+                flower.style.position = 'absolute';
+                flower.style.top = '-60px';
+                flower.style.left = Math.random() * 100 + 'vw';
+                flower.style.fontSize = (Math.random() * 2 + 1.5) + 'rem';
+                flower.style.userSelect = 'none';
+
+                container.appendChild(flower);
+
+                gsap.to(flower, {
+                    y: '110vh',
+                    x: (Math.random() - 0.5) * 200,
+                    rotation: Math.random() * 720,
+                    duration: Math.random() * 2.5 + 2,
+                    delay: Math.random() * 1.2,
+                    ease: "power1.out"
+                });
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key >= '0' && e.key <= '9') {
+                pressKey(e.key);
+            } else if (e.key === 'Backspace') {
+                deleteKey();
+            }
+        });
+    </script>
 </body>
+
 </html>
