@@ -7,7 +7,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Flower Rain Overlay */
         .flower-rain-container {
             position: fixed;
             top: 0;
@@ -37,7 +36,6 @@
             }
         }
 
-        /* Smooth Screen Fade Overlay */
         .page-transition-overlay {
             position: fixed;
             top: 0;
@@ -64,10 +62,7 @@
         <button class="cta-button" id="magicBtn">Click to see a magic 💕</button>
     </div>
 
-    <!-- Flower Rain Container -->
     <div class="flower-rain-container" id="flowerRain"></div>
-
-    <!-- Fade Overlay -->
     <div class="page-transition-overlay" id="transitionOverlay"></div>
 
     <script src="script.js"></script>
@@ -75,12 +70,10 @@
         document.getElementById('magicBtn').addEventListener('click', function () {
             startFlowerRain();
 
-            // Fade screen smoothly
             setTimeout(() => {
                 document.getElementById('transitionOverlay').classList.add('active');
             }, 1200);
 
-            // Redirect to lock page
             setTimeout(() => {
                 window.location.href = "lock.html";
             }, 2200);
