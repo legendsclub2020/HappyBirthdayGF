@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome, You✨</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg,
+                    #ffd1dc 0%,
+                    #e6e6fa 25%,
+                    #ffefd5 50%,
+                    #e6e6fa 75%,
+                    #ffd1dc 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #4a4a4a;
+            position: relative;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Background Hearts */
+        .floating-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(255, 105, 180, 0.4);
+            animation: floatHeart 7s ease-in-out infinite;
+        }
+
+        @keyframes floatHeart {
+            0% { transform: translate(0, 100vh) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translate(30px, -10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Passcode Card */
+        .passcode-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 2.5rem 2rem;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.25);
+            text-align: center;
+            width: 90%;
+            max-width: 350px;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            z-index: 10;
+            position: relative;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .passcode-card.fade-out {
+            opacity: 0;
+            transform: scale(0.9);
+            pointer-events: none;
+        }
+
+        .lock-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .passcode-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.4rem;
+            color: #ff69b4;
+            margin-bottom: 0.2rem;
+        }
+
+        .passcode-subtitle {
+            font-size: 0.95rem;
+            color: #888;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        /* Dots indicator */
+        .dots-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .dot {
+            width: 14px;
+            height: 14px;
+            border: 2px solid #ff69b4;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .dot.filled {
+            background-color: #ff69b4;
+            transform: scale(1.15);
+        }
+
+        /* Keypad */
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+        .key-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 105, 180, 0.2);
+            color: #ff69b4;
+            font-size: 1.5rem;
+            font-weight: 600;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            user-select: none;
+        }
+
+        .key-btn:active {
+            transform: scale(0.92);
+            background: #ff69b4;
+            color: white;
+        }
+
+        .key-btn.empty {
+            visibility: hidden;
+        }
+
+        /* Shake animation on wrong PIN */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
+        }
+
+        .shake {
+            animation: shake 0.4s ease-in-out;
+        }
+
+        /* Flower Rain Overlay */
+        .flower-rain-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        .falling-flower {
+            position: absolute;
+            top: -50px;
+            font-size: 2rem;
+            user-select: none;
+            animation: flowerFall var(--fall-duration) linear infinite;
+        }
+
+        @keyframes flowerFall {
+            0% {
+                transform: translateY(-50px) rotate(0deg) scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(105vh) rotate(360deg) scale(1.2);
+                opacity: 0.3;
+            }
+        }
+
+        /* Smooth Screen Fade To White/Pastel */
+        .page-transition-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffd1dc;
+            z-index: 10000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        .page-transition-overlay.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="floating-hearts">
+        <div class="heart" style="left: 10%; animation-delay: 0s;">💝</div>
+        <div class="heart" style="left: 30%; animation-delay: 2s;">💖</div>
+        <div class="heart" style="left: 50%; animation-delay: 4s;">💗</div>
+        <div class="heart" style="left: 70%; animation-delay: 1s;">💓</div>
+        <div class="heart" style="left: 90%; animation-delay: 3s;">💕</div>
+    </div>
+
+    <div class="passcode-card" id="passcodeCard">
+        <div class="lock-icon">🔒</div>
+        <h2 class="passcode-title">Welcome, You</h2>
+        <p class="passcode-subtitle">a little secret...</p>
+
+        <div class="dots-container">
+            <div class="dot" id="dot-0"></div>
+            <div class="dot" id="dot-1"></div>
+            <div class="dot" id="dot-2"></div>
+            <div class="dot" id="dot-3"></div>
+        </div>
+
+        <div class="keypad">
+            <button class="key-btn" onclick="pressKey('1')">1</button>
+            <button class="key-btn" onclick="pressKey('2')">2</button>
+            <button class="key-btn" onclick="pressKey('3')">3</button>
+            <button class="key-btn" onclick="pressKey('4')">4</button>
+            <button class="key-btn" onclick="pressKey('5')">5</button>
+            <button class="key-btn" onclick="pressKey('6')">6</button>
+            <button class="key-btn" onclick="pressKey('7')">7</button>
+            <button class="key-btn" onclick="pressKey('8')">8</button>
+            <button class="key-btn" onclick="pressKey('9')">9</button>
+            <button class="key-btn empty"></button>
+            <button class="key-btn" onclick="pressKey('0')">0</button>
+            <button class="key-btn" onclick="deleteKey()">⌫</button>
+        </div>
+    </div>
+
+    <!-- Flower Rain Container -->
+    <div class="flower-rain-container" id="flowerRain"></div>
+
+    <!-- Smooth Transition Overlay -->
+    <div class="page-transition-overlay" id="transitionOverlay"></div>
+
+    <script>
+        const CORRECT_PIN = "0407";
+        let enteredPin = "";
+
+        function pressKey(num) {
+            if (enteredPin.length < 4) {
+                enteredPin += num;
+                updateDots();
+
+                if (enteredPin.length === 4) {
+                    setTimeout(checkPin, 200);
+                }
+            }
+        }
+
+        function deleteKey() {
+            if (enteredPin.length > 0) {
+                enteredPin = enteredPin.slice(0, -1);
+                updateDots();
+            }
+        }
+
+        function updateDots() {
+            for (let i = 0; i < 4; i++) {
+                const dot = document.getElementById(`dot-${i}`);
+                if (i < enteredPin.length) {
+                    dot.classList.add('filled');
+                } else {
+                    dot.classList.remove('filled');
+                }
+            }
+        }
+
+        function checkPin() {
+            if (enteredPin === CORRECT_PIN) {
+                unlockAnimation();
+            } else {
+                const card = document.getElementById('passcodeCard');
+                card.classList.add('shake');
+                setTimeout(() => {
+                    card.classList.remove('shake');
+                    enteredPin = "";
+                    updateDots();
+                }, 400);
+            }
+        }
+
+        function unlockAnimation() {
+            // Fade out passcode card
+            document.getElementById('passcodeCard').classList.add('fade-out');
+
+            // Trigger Flower Rain
+            startFlowerRain();
+
+            // After flower rain starts, smoothly fade screen and transition
+            setTimeout(() => {
+                document.getElementById('transitionOverlay').classList.add('active');
+            }, 1800);
+
+            // Redirect to main page (last.html)
+            setTimeout(() => {
+                window.location.href = "last.html";
+            }, 2800);
+        }
+
+        function startFlowerRain() {
+            const container = document.getElementById('flowerRain');
+            const flowers = ['🌸', '🌺', '🌷', '🌹', '✨', '💖', '🌼'];
+
+            for (let i = 0; i < 50; i++) {
+                const flower = document.createElement('div');
+                flower.classList.add('falling-flower');
+                flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+
+                flower.style.left = Math.random() * 100 + 'vw';
+                flower.style.fontSize = (Math.random() * 1.5 + 1.2) + 'rem';
+
+                const duration = Math.random() * 2 + 2; // 2s to 4s speed
+                flower.style.setProperty('--fall-duration', duration + 's');
+                flower.style.animationDelay = (Math.random() * 1.5) + 's';
+
+                container.appendChild(flower);
+            }
+        }
+
+        // Keyboard Support
+        document.addEventListener('keydown', (e) => {
+            if (e.key >= '0' && e.key <= '9') {
+                pressKey(e.key);
+            } else if (e.key === 'Backspace') {
+                deleteKey();
+            }
+        });
+    </script>
+</body>
+
+</html>
