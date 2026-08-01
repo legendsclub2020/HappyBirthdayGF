@@ -17,12 +17,7 @@
 
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg,
-                    #ffd1dc 0%,
-                    #e6e6fa 25%,
-                    #ffefd5 50%,
-                    #e6e6fa 75%,
-                    #ffd1dc 100%);
+            background: linear-gradient(135deg, #ffd1dc 0%, #e6e6fa 25%, #ffefd5 50%, #e6e6fa 75%, #ffd1dc 100%);
             background-size: 400% 400%;
             animation: gradientFlow 15s ease infinite;
             font-family: 'Quicksand', sans-serif;
@@ -40,7 +35,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Passcode Card */
         .passcode-card {
             background: rgba(255, 255, 255, 0.88);
             backdrop-filter: blur(15px);
@@ -62,55 +56,15 @@
             pointer-events: none;
         }
 
-        .lock-icon {
-            font-size: 2.8rem;
-            margin-bottom: 0.5rem;
-        }
+        .lock-icon { font-size: 2.8rem; margin-bottom: 0.5rem; }
+        .passcode-title { font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: #ff69b4; margin-bottom: 0.2rem; }
+        .passcode-subtitle { font-size: 0.95rem; color: #888; margin-bottom: 1.5rem; font-style: italic; }
 
-        .passcode-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            color: #ff69b4;
-            margin-bottom: 0.2rem;
-        }
+        .dots-container { display: flex; justify-content: center; gap: 12px; margin-bottom: 2rem; }
+        .dot { width: 14px; height: 14px; border: 2px solid #ff69b4; border-radius: 50%; transition: all 0.2s ease; }
+        .dot.filled { background-color: #ff69b4; transform: scale(1.2); }
 
-        .passcode-subtitle {
-            font-size: 0.95rem;
-            color: #888;
-            margin-bottom: 1.5rem;
-            font-style: italic;
-        }
-
-        /* Dots indicator */
-        .dots-container {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 2rem;
-        }
-
-        .dot {
-            width: 14px;
-            height: 14px;
-            border: 2px solid #ff69b4;
-            border-radius: 50%;
-            transition: all 0.2s ease;
-        }
-
-        .dot.filled {
-            background-color: #ff69b4;
-            transform: scale(1.2);
-        }
-
-        /* Keypad */
-        .keypad {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            max-width: 260px;
-            margin: 0 auto;
-        }
-
+        .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 260px; margin: 0 auto; }
         .key-btn {
             background: rgba(255, 255, 255, 0.95);
             border: 1px solid rgba(255, 105, 180, 0.25);
@@ -127,56 +81,36 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
             user-select: none;
         }
-
-        .key-btn:active {
-            transform: scale(0.92);
-            background: #ff69b4;
-            color: white;
-        }
-
-        .key-btn.empty {
-            visibility: hidden;
-        }
+        .key-btn:active { transform: scale(0.92); background: #ff69b4; color: white; }
+        .key-btn.empty { visibility: hidden; }
 
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             20%, 60% { transform: translateX(-10px); }
             40%, 80% { transform: translateX(10px); }
         }
+        .shake { animation: shake 0.4s ease-in-out; }
 
-        .shake {
-            animation: shake 0.4s ease-in-out;
-        }
-
-        /* Full Screen Flower Shower Container */
         .flower-shower-container {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
             pointer-events: none;
             z-index: 9999;
             overflow: hidden;
         }
 
-        /* Transition Overlay */
         .page-transition-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
             background: linear-gradient(135deg, #ffd1dc, #ffefd5, #e6e6fa);
             z-index: 10000;
             opacity: 0;
             pointer-events: none;
             transition: opacity 1.2s ease-in-out;
         }
-
-        .page-transition-overlay.active {
-            opacity: 1;
-        }
+        .page-transition-overlay.active { opacity: 1; }
     </style>
 </head>
 
@@ -268,8 +202,9 @@
                 document.getElementById('transitionOverlay').classList.add('active');
             }, 2000);
 
+            // NOW REDIRECTS TO CAUSE.HTML
             setTimeout(() => {
-                window.location.href = "last.html";
+                window.location.href = "cause.html";
             }, 3000);
         }
 
