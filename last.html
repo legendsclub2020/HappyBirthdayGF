@@ -441,10 +441,20 @@
             line-height: 1.8;
         }
 
-        .goodbye-btn {
+        .action-buttons-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .goodbye-btn, .wommoth-note-btn {
             display: inline-block;
             padding: 1rem 2rem;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
             background: linear-gradient(45deg, #ff69b4, #da70d6);
             color: white;
             border: none;
@@ -456,9 +466,23 @@
             animation: float 3s infinite ease-in-out;
         }
 
-        .goodbye-btn:hover {
+        .wommoth-note-btn {
+            background: linear-gradient(45deg, #ff4d6d, #ff758f);
+            animation-delay: -1.5s;
+        }
+
+        .goodbye-btn:hover, .wommoth-note-btn:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(255, 105, 180, 0.6);
+        }
+
+        /* Personal Note Modal Styling */
+        .note-card-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #ff4d6d;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
         }
 
         @keyframes float {
@@ -528,6 +552,10 @@
                 flex-direction: column;
                 gap: 1rem;
             }
+
+            .note-card-text {
+                font-size: 1.6rem;
+            }
         }
     </style>
 </head>
@@ -556,6 +584,18 @@
             <h3>For You, Saima 🌸</h3>
             <p>A special bouquet made with all my love!</p>
             <button class="close-btn" onclick="closeBouquet()">Close 💕</button>
+        </div>
+    </div>
+
+    <!-- Personal Note Modal Page -->
+    <div class="bouquet-modal" id="noteModal">
+        <div class="bouquet-card">
+            <h3>A Note For You 💌</h3>
+            <div class="note-card-text">
+                Made by ur wommoth, time - 3 days ❤️<br>
+                Hat betha hoye gese babe ato code lekhte, I love u so much, I hope u like it! ✨
+            </div>
+            <button class="close-btn" onclick="closeNote()">Close ❤️</button>
         </div>
     </div>
 
@@ -622,10 +662,14 @@
             You are so much more than just my girlfriend—you are my wife, my other half, my better half, my ultimate comfort zone, my heart, and my absolute everything. I love you, Saima. I hope today is as amazing as you are, but even more than that, I hope your whole life is filled with joy, peace, and endless achievements. <br>
             On your birthday, I just wish for endless happiness, love, and success to come your way.🌸</p>
         <p>May you grow into the most successful, happiest woman in the world. Thank you for being in my life and for being my girlfriend. I will be forever grateful to have you by my side. Many, many happy returns of the day, my love. I love you so, so, so much! ❤️✨✨</p>
-        <a href="#" class="goodbye-btn">I LOVE YOU SAIMA 💝</a>
+        
+        <div class="action-buttons-group">
+            <a href="#" class="goodbye-btn">I LOVE YOU SAIMA 💝</a>
+            <button class="wommoth-note-btn" onclick="openNote()">A Note For You 💌</button>
+        </div>
     </section>
 
-    <!-- JavaScript for Bouquet Opening & Flower Shower -->
+    <!-- JavaScript for Bouquet & Note Opening & Flower Shower -->
     <script>
         function openBouquet() {
             const modal = document.getElementById('bouquetModal');
@@ -635,6 +679,16 @@
 
         function closeBouquet() {
             const modal = document.getElementById('bouquetModal');
+            modal.classList.remove('active');
+        }
+
+        function openNote() {
+            const modal = document.getElementById('noteModal');
+            modal.classList.add('active');
+        }
+
+        function closeNote() {
+            const modal = document.getElementById('noteModal');
             modal.classList.remove('active');
         }
 
