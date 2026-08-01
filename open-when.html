@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Open When... 💌</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;500;600;700&display=swap');
 
     :root {
       --bg-color: #fff0f3;
@@ -13,7 +13,7 @@
       --accent-color: #ff4d6d;
       --accent-hover: #ff758f;
       --text-color: #590d22;
-      --border-radius: 16px;
+      --border-radius: 20px;
     }
 
     * {
@@ -42,7 +42,7 @@
       border-radius: 25px;
       color: var(--accent-color);
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
       box-shadow: 0 4px 12px rgba(255, 77, 109, 0.15);
       transition: all 0.3s ease;
     }
@@ -55,7 +55,7 @@
 
     h1 {
       font-family: 'Dancing Script', cursive;
-      font-size: 3rem;
+      font-size: 3.2rem;
       color: #ff4d6d;
       margin-bottom: 0.5rem;
       text-align: center;
@@ -70,14 +70,14 @@
 
     .envelope-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 1.5rem;
       width: 100%;
-      max-width: 800px;
+      max-width: 950px;
     }
 
     .envelope-card {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.92);
       border: 2px solid #ffccd5;
       border-radius: var(--border-radius);
       padding: 1.8rem 1.5rem;
@@ -102,7 +102,7 @@
 
     .envelope-title {
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: #4a4a4a;
     }
 
@@ -134,9 +134,9 @@
     .modal-content {
       background: #ffffff;
       border-radius: var(--border-radius);
-      max-width: 500px;
+      max-width: 520px;
       width: 100%;
-      padding: 2rem;
+      padding: 2.2rem 2rem;
       box-shadow: 0 15px 35px rgba(0,0,0,0.2);
       position: relative;
       transform: scale(0.8);
@@ -151,17 +151,18 @@
 
     .modal-header {
       font-family: 'Dancing Script', cursive;
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       color: var(--accent-color);
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
     }
 
     .modal-body {
       font-size: 1.05rem;
-      line-height: 1.7;
+      line-height: 1.75;
       color: #4a4a4a;
       margin-bottom: 1.8rem;
       white-space: pre-line;
+      text-align: left;
     }
 
     .close-btn {
@@ -185,10 +186,10 @@
 </head>
 <body>
 
-  <a href="last.html" class="back-btn">← Back</a>
+  <a href="last.html" class="back-btn">← Back to Songs</a>
 
   <h1>Open When... 💌</h1>
-  <p class="subtitle">Pick an envelope whenever you feel like reading a little message.</p>
+  <p class="subtitle">Pick an envelope whenever you feel like reading a little message from me.</p>
 
   <div class="envelope-grid">
     <div class="envelope-card" onclick="openLetter('missMe')">
@@ -209,6 +210,36 @@
     <div class="envelope-card" onclick="openLetter('birthdayNight')">
       <div class="envelope-icon">🎂</div>
       <div class="envelope-title">Open on your birthday night</div>
+    </div>
+
+    <div class="envelope-card" onclick="openLetter('insecure')">
+      <div class="envelope-icon">🪞</div>
+      <div class="envelope-title">Open when you feel insecure</div>
+    </div>
+
+    <div class="envelope-card" onclick="openLetter('missVoice')">
+      <div class="envelope-icon">📞</div>
+      <div class="envelope-title">Open when you miss my voice</div>
+    </div>
+
+    <div class="envelope-card" onclick="openLetter('superHappy')">
+      <div class="envelope-icon">✨</div>
+      <div class="envelope-title">Open when you're really happy</div>
+    </div>
+
+    <div class="envelope-card" onclick="openLetter('overwhelmed')">
+      <div class="envelope-icon">🫂</div>
+      <div class="envelope-title">Open when you feel stressed</div>
+    </div>
+
+    <div class="envelope-card" onclick="openLetter('weFought')">
+      <div class="envelope-icon">🥺</div>
+      <div class="envelope-title">Open if we ever argue</div>
+    </div>
+
+    <div class="envelope-card" onclick="openLetter('futureGoal')">
+      <div class="envelope-icon">🏡</div>
+      <div class="envelope-title">Open when you dream of our future</div>
     </div>
   </div>
 
@@ -238,6 +269,30 @@
       birthdayNight: {
         title: "On Your Birthday Night 🎉",
         text: "I hope today was as special, stunning, and incredible as you are! Thank you for existing and making my whole world so much brighter. Happy Birthday, Saima!\n\nP.S. Out of all the gifts in the world, being yours is still my absolute favorite. 🎁💖"
+      },
+      insecure: {
+        title: "When You Feel Insecure 👑",
+        text: "Saima, look at me. You are literally the prettiest, sweetest, and most graceful girl in the entire world. Your smile can light up my darkest day.\n\nDon't ever let self-doubt make you forget how precious you are to me. In my eyes, you are absolute perfection. ❤️"
+      },
+      missVoice: {
+        title: "When You Miss My Voice 📞",
+        text: "Call me right now! I don't care if I'm busy, asleep, or doing something else—hearing your voice is always my favorite part of the day.\n\nIf I can't pick up immediately, just leave me a voice note and know that I'll call you back the second I can. I love talking to you endlessly. 💬💕"
+      },
+      superHappy: {
+        title: "When You're Super Happy 🎉",
+        text: "Yay!! Seeing you happy makes me the happiest guy on the planet! I want to hear all about what happened that made you smile today.\n\nKeep shining bright, my love—your joy is contagious and I hope you stay this happy forever! ✨🌸"
+      },
+      overwhelmed: {
+        title: "When You Feel Overwhelmed 🫂",
+        text: "Pause for a second, my baby. Unclench your jaw, relax your shoulders, and take three deep breaths with me.\n\nYou don't have to carry the whole world on your shoulders. Lean on me. I'm right here with you, always and forever. 💗"
+      },
+      weFought: {
+        title: "If We Ever Argue 🥺",
+        text: "Hey, even if we are upset or misunderstanding each other right now, I want you to remember one thing: it's you and me against the problem, never you against me.\n\nI love you so much, Saima. Nothing will ever change that. Let's talk it out softly and hug it out. I'm sorry for any tears, my wife. 💕"
+      },
+      futureGoal: {
+        title: "When You Dream Of Our Future 🏡",
+        text: "When I think of the future, I don't care where we live or what we do as long as I get to wake up next to you every day.\n\nI want to build a warm home with you, raise kids with you, travel with you, and grow old holding your hand. You are my forever. 💍✨"
       }
     };
 
