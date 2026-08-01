@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Other Half✨</title>
+    <title>Welcome, My Love✨</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;500;600&display=swap');
 
@@ -16,17 +17,16 @@
 
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg,
-                    #ffd1dc 0%,
-                    #e6e6fa 25%,
-                    #ffefd5 50%,
-                    #e6e6fa 75%,
-                    #ffd1dc 100%);
+            background: linear-gradient(135deg, #ffd1dc 0%, #e6e6fa 25%, #ffefd5 50%, #e6e6fa 75%, #ffd1dc 100%);
             background-size: 400% 400%;
             animation: gradientFlow 15s ease infinite;
             font-family: 'Quicksand', sans-serif;
-            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
             color: #4a4a4a;
+            position: relative;
         }
 
         @keyframes gradientFlow {
@@ -35,315 +35,212 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Top Bar & Heart Button */
-        .top-bar {
-            display: flex;
-            justify-content: flex-end;
-            padding: 1.5rem 2rem 0 2rem;
-            position: relative;
+        .passcode-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(15px);
+            padding: 2.5rem 2rem;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.25);
+            text-align: center;
+            width: 90%;
+            max-width: 360px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
             z-index: 10;
+            position: relative;
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .flower-btn {
-            background: #ff69b4;
-            color: white;
-            border: none;
-            padding: 0.8rem 1.4rem;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
-            transition: all 0.3s ease;
+        .passcode-card.fade-out {
+            opacity: 0;
+            transform: scale(0.85);
+            pointer-events: none;
+        }
+
+        .lock-icon { font-size: 2.8rem; margin-bottom: 0.5rem; }
+        .passcode-title { font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: #ff69b4; margin-bottom: 0.2rem; }
+        .passcode-subtitle { font-size: 0.95rem; color: #888; margin-bottom: 1.5rem; font-style: italic; }
+
+        .dots-container { display: flex; justify-content: center; gap: 12px; margin-bottom: 2rem; }
+        .dot { width: 14px; height: 14px; border: 2px solid #ff69b4; border-radius: 50%; transition: all 0.2s ease; }
+        .dot.filled { background-color: #ff69b4; transform: scale(1.2); }
+
+        .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 260px; margin: 0 auto; }
+        .key-btn {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(255, 105, 180, 0.25);
+            color: #ff69b4;
+            font-size: 1.5rem;
+            font-weight: 600;
+            height: 55px;
+            border-radius: 50%;
             display: flex;
-            align-items: center;
-            gap: 8px;
-            animation: pulse 2s infinite;
-        }
-
-        .flower-btn:hover {
-            transform: scale(1.08);
-            background: #ff1493;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        /* Bouquet Modal Overlay */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(8px);
-            z-index: 10000;
             justify-content: center;
             align-items: center;
-            padding: 2rem;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 25px;
-            text-align: center;
-            position: relative;
-            max-width: 450px;
-            width: 100%;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        @keyframes popIn {
-            0% { transform: scale(0.5); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
             cursor: pointer;
-            color: #888;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            user-select: none;
         }
+        .key-btn:active { transform: scale(0.92); background: #ff69b4; color: white; }
+        .key-btn.empty { visibility: hidden; }
 
-        /* Bouquet Sticker Styling */
-        .bouquet-sticker {
-            width: 100%;
-            max-width: 320px;
-            height: auto;
-            border-radius: 20px;
-            border: 8px solid white;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), 0 0 0 4px #ffb6c1;
-            margin: 1.5rem 0;
-            animation: floatSticker 4s ease-in-out infinite;
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
         }
+        .shake { animation: shake 0.4s ease-in-out; }
 
-        @keyframes floatSticker {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(2deg); }
-        }
-
-        .modal-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            color: #ff69b4;
-        }
-
-        /* Floating Hearts */
-        .floating-hearts {
+        .flower-shower-container {
             position: fixed;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
             pointer-events: none;
-            z-index: 2;
+            z-index: 9999;
+            overflow: hidden;
         }
 
-        .heart {
-            position: absolute;
-            font-size: 1.5rem;
-            color: rgba(255, 105, 180, 0.6);
-            animation: floatHeart 6s ease-in-out infinite;
+        .page-transition-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: linear-gradient(135deg, #ffd1dc, #ffefd5, #e6e6fa);
+            z-index: 10000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.2s ease-in-out;
         }
-
-        @keyframes floatHeart {
-            0% { transform: translate(0, 100vh) rotate(0deg); }
-            100% { transform: translate(30px, -100vh) rotate(360deg); }
-        }
-
-        .welcome {
-            text-align: center;
-            padding: 2rem 2rem 4rem 2rem;
-            position: relative;
-            z-index: 3;
-        }
-
-        .welcome h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4rem;
-            color: #ff69b4;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .welcome p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 1.5rem auto;
-            line-height: 1.6;
-        }
-
-        .memory-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            z-index: 3;
-            position: relative;
-        }
-
-        .memory-card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.5s ease;
-        }
-
-        .memory-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .memory-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 1rem;
-        }
-
-        .memory-date {
-            font-family: 'Dancing Script', cursive;
-            color: #ff69b4;
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .spotify-container {
-            max-width: 600px;
-            margin: 3rem auto 1rem auto;
-            padding: 0 1.5rem;
-            position: relative;
-            z-index: 3;
-            text-align: center;
-        }
-
-        .spotify-container iframe {
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-            border-radius: 12px;
-        }
-
-        .final-message {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-            margin-top: 2rem;
-            position: relative;
-            z-index: 3;
-        }
-
-        .final-message h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3rem;
-            color: #ff69b4;
-            margin-bottom: 2rem;
-        }
-
-        .goodbye-btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            background: linear-gradient(45deg, #ff69b4, #da70d6);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
-        }
+        .page-transition-overlay.active { opacity: 1; }
     </style>
 </head>
 
 <body>
-    <div class="floating-hearts">
-        <div class="heart" style="left: 10%;">💝</div>
-        <div class="heart" style="left: 30%;">💖</div>
-        <div class="heart" style="left: 50%;">💗</div>
-        <div class="heart" style="left: 70%;">💓</div>
-        <div class="heart" style="left: 90%;">💕</div>
-    </div>
 
-    <!-- Heart Button at Top -->
-    <div class="top-bar">
-        <button class="flower-btn" onclick="toggleFlowerModal()">
-            💖 Open Your Flowers 💐
-        </button>
-    </div>
+    <div class="passcode-card" id="passcodeCard">
+        <div class="lock-icon">🔒</div>
+        <h2 class="passcode-title">Welcome, You</h2>
+        <p class="passcode-subtitle">a little secret...</p>
 
-    <!-- Flower Bouquet Surprise Overlay -->
-    <div class="modal-overlay" id="flowerModal">
-        <div class="modal-content">
-            <button class="close-btn" onclick="toggleFlowerModal()">&times;</button>
-            <h3 class="modal-title">Flowers For You 🌸</h3>
-            <img src="./bouquet.jpg" alt="Flower Bouquet" class="bouquet-sticker">
-            <p style="color: #666; font-size: 1.1rem;">A special bouquet for my special girl! 💐✨</p>
+        <div class="dots-container">
+            <div class="dot" id="dot-0"></div>
+            <div class="dot" id="dot-1"></div>
+            <div class="dot" id="dot-2"></div>
+            <div class="dot" id="dot-3"></div>
+        </div>
+
+        <div class="keypad">
+            <button class="key-btn" onclick="pressKey('1')">1</button>
+            <button class="key-btn" onclick="pressKey('2')">2</button>
+            <button class="key-btn" onclick="pressKey('3')">3</button>
+            <button class="key-btn" onclick="pressKey('4')">4</button>
+            <button class="key-btn" onclick="pressKey('5')">5</button>
+            <button class="key-btn" onclick="pressKey('6')">6</button>
+            <button class="key-btn" onclick="pressKey('7')">7</button>
+            <button class="key-btn" onclick="pressKey('8')">8</button>
+            <button class="key-btn" onclick="pressKey('9')">9</button>
+            <button class="key-btn empty"></button>
+            <button class="key-btn" onclick="pressKey('0')">0</button>
+            <button class="key-btn" onclick="deleteKey()">⌫</button>
         </div>
     </div>
 
-    <section class="welcome">
-        <h1>Happy Birthday My Wife</h1>
-        <p>Every moment I have spent with you has been magical. You are my wife, my other half, my better half, my gf and my baby you are my everything ...</p>
-    </section>
-
-    <div class="memory-container">
-        <div class="memory-card">
-            <img src="./d1.jpg" alt="Memory 1" class="memory-img">
-            <div class="memory-date">Her Smile Says It All</div>
-            <p>You’re truly the sweetest girl I know, and I feel lucky to have a partner like you.❤️</p>
-        </div>
-        <div class="memory-card">
-            <img src="./d2.jpg" alt="Memory 2" class="memory-img">
-            <div class="memory-date">My Wife</div>
-            <p>May your journey ahead be filled with happiness, success, and endless smiles.😊💕</p>
-        </div>
-        <div class="memory-card">
-            <img src="./d3.jpg" alt="Memory 3" class="memory-img">
-            <div class="memory-date">Pretty Soul</div>
-            <p>Keep being the amazing person you are—you make every moment brighter.🌸💖</p>
-        </div>
-    </div>
-
-    <!-- Spotify Player -->
-    <div class="spotify-container">
-        <iframe 
-            style="border-radius:12px" 
-            src="https://open.spotify.com/embed/track/0pYDUAXXUanILl4FrDtdIt?utm_source=generator" 
-            width="100%" 
-            height="152" 
-            frameBorder="0" 
-            allowfullscreen="" 
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-            loading="lazy">
-        </iframe>
-    </div>
-
-    <section class="final-message">
-        <h2>Thank You for being my Girlfriend</h2>
-        <p>HAPPY BIRTHDAY SAIMA!!!! 🎂❤️💫<br><br>
-        You are so much more than just my girlfriend—you are my wife, my other half, my better half, my ultimate comfort zone, my heart, and my absolute everything. I love you, Saima. Many, many happy returns of the day, my love! ❤️✨</p>
-        <br>
-        <a href="#" class="goodbye-btn">I Love You Saima💝</a>
-    </section>
+    <div class="flower-shower-container" id="flowerContainer"></div>
+    <div class="page-transition-overlay" id="transitionOverlay"></div>
 
     <script>
-        function toggleFlowerModal() {
-            const modal = document.getElementById('flowerModal');
-            modal.classList.toggle('active');
+        const CORRECT_PIN = "0407";
+        let enteredPin = "";
+
+        function pressKey(num) {
+            if (enteredPin.length < 4) {
+                enteredPin += num;
+                updateDots();
+
+                if (enteredPin.length === 4) {
+                    setTimeout(checkPin, 200);
+                }
+            }
         }
+
+        function deleteKey() {
+            if (enteredPin.length > 0) {
+                enteredPin = enteredPin.slice(0, -1);
+                updateDots();
+            }
+        }
+
+        function updateDots() {
+            for (let i = 0; i < 4; i++) {
+                const dot = document.getElementById(`dot-${i}`);
+                if (i < enteredPin.length) {
+                    dot.classList.add('filled');
+                } else {
+                    dot.classList.remove('filled');
+                }
+            }
+        }
+
+        function checkPin() {
+            if (enteredPin === CORRECT_PIN) {
+                unlockAnimation();
+            } else {
+                const card = document.getElementById('passcodeCard');
+                card.classList.add('shake');
+                setTimeout(() => {
+                    card.classList.remove('shake');
+                    enteredPin = "";
+                    updateDots();
+                }, 400);
+            }
+        }
+
+        function unlockAnimation() {
+            document.getElementById('passcodeCard').classList.add('fade-out');
+            triggerBigFlowerShower();
+
+            setTimeout(() => {
+                document.getElementById('transitionOverlay').classList.add('active');
+            }, 2000);
+
+            // NOW REDIRECTS TO CAUSE.HTML
+            setTimeout(() => {
+                window.location.href = "cause.html";
+            }, 3000);
+        }
+
+        function triggerBigFlowerShower() {
+            const container = document.getElementById('flowerContainer');
+            const flowerTypes = ['🌸', '🌺', '🌷', '🌹', '🪷', '✨', '💖', '💐', '🍃'];
+
+            for (let i = 0; i < 120; i++) {
+                const flower = document.createElement('div');
+                flower.innerText = flowerTypes[Math.floor(Math.random() * flowerTypes.length)];
+                flower.style.position = 'absolute';
+                flower.style.top = '-60px';
+                flower.style.left = Math.random() * 100 + 'vw';
+                flower.style.fontSize = (Math.random() * 2 + 1.5) + 'rem';
+                flower.style.userSelect = 'none';
+
+                container.appendChild(flower);
+
+                gsap.to(flower, {
+                    y: '110vh',
+                    x: (Math.random() - 0.5) * 200,
+                    rotation: Math.random() * 720,
+                    duration: Math.random() * 2.5 + 2,
+                    delay: Math.random() * 1.2,
+                    ease: "power1.out"
+                });
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key >= '0' && e.key <= '9') {
+                pressKey(e.key);
+            } else if (e.key === 'Backspace') {
+                deleteKey();
+            }
+        });
     </script>
 </body>
 
