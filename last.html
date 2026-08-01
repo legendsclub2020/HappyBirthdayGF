@@ -51,6 +51,35 @@
             z-index: 10;
         }
 
+        /* Together Timer - Top Right Floating Badge */
+        .together-timer-container {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1.5px solid rgba(255, 182, 193, 0.8);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.25);
+            text-align: center;
+            z-index: 100;
+        }
+
+        .together-timer-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #ff69b4;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+
+        .together-timer-clock {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #4a4a4a;
+        }
+
         .bouquet-btn {
             background: linear-gradient(45deg, #ff69b4, #ff1493);
             color: white;
@@ -540,6 +569,14 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .together-timer-container {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin: 0 auto 1rem auto;
+                max-width: 250px;
+            }
+
             .welcome h1 {
                 font-size: 3rem;
             }
@@ -572,6 +609,12 @@
         <div class="heart" style="--float-duration: 7s; --delay: 2s; --translate-x: 40px;">💗</div>
         <div class="heart" style="--float-duration: 9s; --delay: 3s; --translate-x: -20px;">💓</div>
         <div class="heart" style="--float-duration: 5s; --delay: 4s; --translate-x: 30px;">💕</div>
+    </div>
+
+    <!-- Together Since Live Timer Badge (Top Right) -->
+    <div class="together-timer-container">
+        <div class="together-timer-title">Together Since May 28 💖</div>
+        <div class="together-timer-clock" id="togetherClock">0d 0h 0m 0s</div>
     </div>
 
     <!-- Top Action Button -->
@@ -674,7 +717,7 @@
         </div>
     </section>
 
-    <!-- JavaScript for Bouquet & Note Opening & Flower Shower -->
+    <!-- JavaScript for Bouquet, Note, Flower Shower & Relationship Timer -->
     <script>
         function openBouquet() {
             const modal = document.getElementById('bouquetModal');
@@ -714,6 +757,29 @@
                 }, i * 90);
             }
         }
+
+        /* Relationship Timer Calculation */
+        function updateRelationshipTimer() {
+            // Set Start Date: May 28 at 02:06:00
+            const startDate = new Date('May 28, 2024 02:06:00');
+            const now = new Date();
+
+            const diff = now - startDate;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / 1000 / 60) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            const timerElement = document.getElementById('togetherClock');
+            if (timerElement) {
+                timerElement.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
+        }
+
+        // Update timer every second
+        setInterval(updateRelationshipTimer, 1000);
+        updateRelationshipTimer();
     </script>
 </body>
 
