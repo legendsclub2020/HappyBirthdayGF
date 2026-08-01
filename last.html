@@ -226,13 +226,28 @@
             color: #666;
         }
 
+        /* Spotify Player Styling */
+        .spotify-container {
+            max-width: 600px;
+            margin: 3rem auto 1rem auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 3;
+            text-align: center;
+        }
+
+        .spotify-container iframe {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+        }
+
         /* Final Message Section */
         .final-message {
             text-align: center;
             padding: 4rem 2rem;
             background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(10px);
-            margin-top: 3rem;
+            margin-top: 2rem;
             position: relative;
             z-index: 3;
         }
@@ -379,21 +394,32 @@
         <div class="memory-card">
             <img src="./d1.jpg" alt="First Date" class="memory-img">
             <div class="memory-date">Her Smile Says It All</div>
-            <div class="memory-caption">You’re truly the sweetest girls I know, and I feel lucky to have a partner
-                like you.❤️</div>
+            <div class="memory-caption">You’re truly the sweetest girls I know, and I feel lucky to have a partner like you.❤️</div>
         </div>
         <div class="memory-card">
             <img src="./d2.jpg" alt="Beach Day" class="memory-img">
             <div class="memory-date">My Wife</div>
-            <div class="memory-caption">May your journey ahead be filled with happiness, success, and endless
-                smiles.😊💕</div>
+            <div class="memory-caption">May your journey ahead be filled with happiness, success, and endless smiles.😊💕</div>
         </div>
         <div class="memory-card">
             <img src="./d3.jpg" alt="Movie Night" class="memory-img">
             <div class="memory-date">Pretty Soul,Pretty Face You are js a pretty girl</div>
             <div class="memory-caption">Keep being the amazing person you are—you make every moment brighter.🌸💖</div>
         </div>
+    </div>
 
+    <!-- Spotify Player (Placed Right Above Final Message) -->
+    <div class="spotify-container">
+        <iframe 
+            style="border-radius:12px" 
+            src="https://open.spotify.com/embed/track/44A3P2PSt313P1i3A9P3L0?utm_source=generator" 
+            width="100%" 
+            height="152" 
+            frameBorder="0" 
+            allowfullscreen="" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+            loading="lazy">
+        </iframe>
     </div>
 
     <section class="final-message">
