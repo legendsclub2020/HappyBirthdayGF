@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Saima ✨</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;500;600;700&display=swap');
 
         * {
             margin: 0;
@@ -51,33 +51,52 @@
             z-index: 10;
         }
 
-        /* Together Timer - Top Right Floating Badge */
+        /* Together Timer - Bigger & Pulsing Badge */
         .together-timer-container {
             position: absolute;
             top: 1.5rem;
             right: 1.5rem;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            border: 1.5px solid rgba(255, 182, 193, 0.8);
-            padding: 0.6rem 1.2rem;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.25);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 2px solid #ffb6c1;
+            padding: 0.9rem 1.6rem;
+            border-radius: 25px;
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.35);
             text-align: center;
             z-index: 100;
+            animation: pulseGlow 2s infinite ease-in-out;
+        }
+
+        /* Cute Pulsing Animation */
+        @keyframes pulseGlow {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
+            }
+            50% {
+                transform: scale(1.06);
+                box-shadow: 0 12px 30px rgba(255, 105, 180, 0.6);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
+            }
         }
 
         .together-timer-title {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #ff69b4;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #ff4d6d;
             letter-spacing: 0.5px;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
         }
 
         .together-timer-clock {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #4a4a4a;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ff1493;
+            letter-spacing: 1px;
+            font-family: 'Quicksand', sans-serif;
         }
 
         .bouquet-btn {
@@ -573,8 +592,8 @@
                 position: relative;
                 top: 0;
                 right: 0;
-                margin: 0 auto 1rem auto;
-                max-width: 250px;
+                margin: 0 auto 1.5rem auto;
+                max-width: 300px;
             }
 
             .welcome h1 {
