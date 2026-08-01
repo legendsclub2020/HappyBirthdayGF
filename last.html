@@ -43,6 +43,71 @@
             }
         }
 
+        /* Top Header Action Bar (Bouquet Button) */
+        .top-action-bar {
+            text-align: center;
+            padding-top: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .bouquet-btn {
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            font-size: 1.1rem;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bouquet-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+        }
+
+        /* Falling Flower Petal Animation */
+        .petal {
+            position: fixed;
+            top: -10%;
+            font-size: 1.8rem;
+            pointer-events: none;
+            z-index: 999;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Spotify Player Container */
+        .spotify-container {
+            max-width: 800px;
+            margin: 2rem auto 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .spotify-container iframe {
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
         /* Enhanced Sparkle Effect */
         .magic-sparkles {
             position: fixed;
@@ -78,7 +143,6 @@
             }
         }
 
-        /* Generate 50 sparkles with different positions and animations */
         .magic-sparkles::before,
         .magic-sparkles::after {
             content: '';
@@ -136,7 +200,7 @@
         /* Welcome Section */
         .welcome {
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 2rem 2rem 4rem 2rem;
             position: relative;
             z-index: 3;
         }
@@ -157,7 +221,7 @@
             animation: fadeIn 2s ease 0.5s both;
         }
 
-        /* Enhanced Memory Cards */
+        /* Memory Cards */
         .memory-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -319,15 +383,6 @@
             }
         }
 
-        /* Generate Hearts */
-        .js-generate-hearts {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 2;
-        }
-
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 12px;
@@ -362,12 +417,18 @@
 <body>
     <div class="magic-sparkles"></div>
     <div class="floating-hearts">
-        <!-- Hearts will be generated via CSS -->
         <div class="heart" style="--float-duration: 6s; --delay: 0s; --translate-x: 20px;">💝</div>
         <div class="heart" style="--float-duration: 8s; --delay: 1s; --translate-x: -30px;">💖</div>
         <div class="heart" style="--float-duration: 7s; --delay: 2s; --translate-x: 40px;">💗</div>
         <div class="heart" style="--float-duration: 9s; --delay: 3s; --translate-x: -20px;">💓</div>
         <div class="heart" style="--float-duration: 5s; --delay: 4s; --translate-x: 30px;">💕</div>
+    </div>
+
+    <!-- Bouquet Button at the Top -->
+    <div class="top-action-bar">
+        <button class="bouquet-btn" onclick="sendFlowers()">
+            💐 Send Flowers for Saima 💖
+        </button>
     </div>
 
     <section class="welcome">
@@ -391,7 +452,11 @@
             <div class="memory-date">Pretty Soul,Pretty Face You are Just the Prettiest girl in the world</div>
             <div class="memory-caption">Keep being the amazing person you are—you make every moment brighter.🌸💖</div>
         </div>
+    </div>
 
+    <!-- Spotify Player Section (Directly Above Final Message) -->
+    <div class="spotify-container">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
 
     <section class="final-message">
@@ -402,6 +467,27 @@
         <p>May you grow into the most successful, happiest woman in the world. Thank you for being in my life and for being my girlfriend. I will be forever grateful to have you by my side. Many, many happy returns of the day, my love. I love you so, so, so much! ❤️✨✨</p>
         <a href="#" class="goodbye-btn">I LOVE YOU SAIMA 💝</a>
     </section>
+
+    <!-- JavaScript for Bouquet Flower Shower -->
+    <script>
+        function sendFlowers() {
+            const flowers = ['💐', '🌸', '🌹', '🌷', '🌺', '✨', '💖'];
+            for (let i = 0; i < 35; i++) {
+                setTimeout(() => {
+                    const petal = document.createElement('div');
+                    petal.classList.add('petal');
+                    petal.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+                    petal.style.left = Math.random() * 100 + 'vw';
+                    petal.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    document.body.appendChild(petal);
+
+                    setTimeout(() => {
+                        petal.remove();
+                    }, 5000);
+                }, i * 100);
+            }
+        }
+    </script>
 </body>
 
 </html>
