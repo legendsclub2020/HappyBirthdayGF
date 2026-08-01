@@ -43,7 +43,7 @@
             }
         }
 
-        /* Top Header Action Bar (Bouquet Button) */
+        /* Top Header Action Bar */
         .top-action-bar {
             text-align: center;
             padding-top: 2rem;
@@ -73,13 +73,95 @@
             box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
         }
 
+        /* Bouquet Modal Overlay (Matching Web Theme) */
+        .bouquet-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .bouquet-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .bouquet-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 2.5rem 2rem 2rem 2rem;
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3);
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid #ffd1dc;
+        }
+
+        .bouquet-modal.active .bouquet-card {
+            transform: scale(1);
+        }
+
+        .bouquet-sticker {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            object-fit: cover;
+        }
+
+        .bouquet-card h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #ff69b4;
+            margin-bottom: 0.5rem;
+        }
+
+        .bouquet-card p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .close-btn {
+            background: linear-gradient(45deg, #ff69b4, #da70d6);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.8rem;
+            font-size: 1rem;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 105, 180, 0.5);
+        }
+
         /* Falling Flower Petal Animation */
         .petal {
             position: fixed;
             top: -10%;
             font-size: 1.8rem;
             pointer-events: none;
-            z-index: 999;
+            z-index: 2000;
             animation: fall linear forwards;
         }
 
@@ -88,6 +170,7 @@
                 transform: translateY(0) rotate(0deg);
                 opacity: 1;
             }
+
             100% {
                 transform: translateY(110vh) rotate(360deg);
                 opacity: 0;
@@ -108,7 +191,7 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
-        /* Enhanced Sparkle Effect */
+        /* Sparkle Effect */
         .magic-sparkles {
             position: fixed;
             top: 0;
@@ -117,30 +200,6 @@
             height: 100%;
             pointer-events: none;
             z-index: 1;
-        }
-
-        .sparkle {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background-color: white;
-            animation: twinkle var(--duration, 4s) ease-in-out infinite;
-            opacity: 0;
-        }
-
-        @keyframes twinkle {
-
-            0%,
-            100% {
-                opacity: 0;
-                transform: scale(0.5);
-            }
-
-            50% {
-                opacity: 0.8;
-                transform: scale(1);
-            }
         }
 
         .magic-sparkles::before,
@@ -424,11 +483,21 @@
         <div class="heart" style="--float-duration: 5s; --delay: 4s; --translate-x: 30px;">💕</div>
     </div>
 
-    <!-- Bouquet Button at the Top -->
+    <!-- Top Action Button -->
     <div class="top-action-bar">
-        <button class="bouquet-btn" onclick="sendFlowers()">
-            💐 Send Flowers for Saima 💖
+        <button class="bouquet-btn" onclick="openBouquet()">
+            Open Your Bouquet 💐
         </button>
+    </div>
+
+    <!-- Bouquet Modal Page -->
+    <div class="bouquet-modal" id="bouquetModal">
+        <div class="bouquet-card">
+            <img src="./bouquet.jpg" alt="A Special Bouquet for Saima" class="bouquet-sticker">
+            <h3>For You, Saima 🌸</h3>
+            <p>A special bouquet made with all my love!</p>
+            <button class="close-btn" onclick="closeBouquet()">Close 💕</button>
+        </div>
     </div>
 
     <section class="welcome">
@@ -454,9 +523,9 @@
         </div>
     </div>
 
-    <!-- Spotify Player Section (Directly Above Final Message) -->
+    <!-- Updated Spotify Track Section (Directly Above Final Message) -->
     <div class="spotify-container">
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2MRJ3Oqb5yAONPvQyoWnQ9?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
 
     <section class="final-message">
@@ -468,23 +537,34 @@
         <a href="#" class="goodbye-btn">I LOVE YOU SAIMA 💝</a>
     </section>
 
-    <!-- JavaScript for Bouquet Flower Shower -->
+    <!-- JavaScript for Bouquet Opening & Flower Shower -->
     <script>
-        function sendFlowers() {
-            const flowers = ['💐', '🌸', '🌹', '🌷', '🌺', '✨', '💖'];
-            for (let i = 0; i < 35; i++) {
+        function openBouquet() {
+            const modal = document.getElementById('bouquetModal');
+            modal.classList.add('active');
+            triggerShower();
+        }
+
+        function closeBouquet() {
+            const modal = document.getElementById('bouquetModal');
+            modal.classList.remove('active');
+        }
+
+        function triggerShower() {
+            const flowers = ['💐', '🌸', '🌹', '🌷', '🌺', '✨', '💖', '🌼'];
+            for (let i = 0; i < 40; i++) {
                 setTimeout(() => {
                     const petal = document.createElement('div');
                     petal.classList.add('petal');
                     petal.innerText = flowers[Math.floor(Math.random() * flowers.length)];
                     petal.style.left = Math.random() * 100 + 'vw';
-                    petal.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    petal.style.animationDuration = (Math.random() * 3 + 2.5) + 's';
                     document.body.appendChild(petal);
 
                     setTimeout(() => {
                         petal.remove();
-                    }, 5000);
-                }, i * 100);
+                    }, 5500);
+                }, i * 90);
             }
         }
     </script>
