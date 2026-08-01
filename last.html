@@ -43,6 +43,113 @@
             }
         }
 
+        /* Top Bar & Heart Button */
+        .top-bar {
+            display: flex;
+            justify-content: flex-end;
+            padding: 1.5rem 2rem 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .flower-btn {
+            background: #ff69b4;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.4rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        .flower-btn:hover {
+            transform: scale(1.08);
+            background: #ff1493;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Bouquet Modal Overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 25px;
+            text-align: center;
+            position: relative;
+            max-width: 450px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #888;
+        }
+
+        /* Bouquet Sticker Styling */
+        .bouquet-sticker {
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            border-radius: 20px;
+            border: 8px solid white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), 0 0 0 4px #ffb6c1;
+            margin: 1.5rem 0;
+            animation: floatSticker 4s ease-in-out infinite;
+        }
+
+        @keyframes floatSticker {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        .modal-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #ff69b4;
+        }
+
         /* Enhanced Sparkle Effect */
         .magic-sparkles {
             position: fixed;
@@ -65,20 +172,16 @@
         }
 
         @keyframes twinkle {
-
-            0%,
-            100% {
+            0%, 100% {
                 opacity: 0;
                 transform: scale(0.5);
             }
-
             50% {
                 opacity: 0.8;
                 transform: scale(1);
             }
         }
 
-        /* Generate 50 sparkles with different positions and animations */
         .magic-sparkles::before,
         .magic-sparkles::after {
             content: '';
@@ -97,13 +200,8 @@
         }
 
         @keyframes sparkleLayer {
-            0% {
-                transform: translateY(0);
-            }
-
-            100% {
-                transform: translateY(-50px);
-            }
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50px); }
         }
 
         /* Floating Hearts */
@@ -124,19 +222,14 @@
         }
 
         @keyframes floatHeart {
-            0% {
-                transform: translate(0, 100vh) rotate(0deg);
-            }
-
-            100% {
-                transform: translate(var(--translate-x, 0), -100vh) rotate(360deg);
-            }
+            0% { transform: translate(0, 100vh) rotate(0deg); }
+            100% { transform: translate(var(--translate-x, 0), -100vh) rotate(360deg); }
         }
 
         /* Welcome Section */
         .welcome {
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 2rem 2rem 4rem 2rem;
             position: relative;
             z-index: 3;
         }
@@ -157,7 +250,7 @@
             animation: fadeIn 2s ease 0.5s both;
         }
 
-        /* Enhanced Memory Cards */
+        /* Memory Cards */
         .memory-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -182,22 +275,6 @@
         .memory-card:hover {
             transform: translateY(-10px) scale(1.02);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .memory-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transform: translateX(-100%);
-            transition: 0.5s;
-        }
-
-        .memory-card:hover::before {
-            transform: translateX(100%);
         }
 
         .memory-img {
@@ -226,7 +303,7 @@
             color: #666;
         }
 
-        /* Spotify Player Styling */
+        /* Spotify Player */
         .spotify-container {
             max-width: 600px;
             margin: 3rem auto 1rem auto;
@@ -261,15 +338,8 @@
         }
 
         @keyframes heartbeat {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.1);
-            }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
         .final-message p {
@@ -300,58 +370,24 @@
         }
 
         @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         /* Animations */
         @keyframes fadeInScale {
-            0% {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
         @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        /* Generate Hearts */
-        .js-generate-hearts {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 2;
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 12px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.4);
-        }
-
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.4); }
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(45deg, #ff69b4, #da70d6);
             border-radius: 6px;
@@ -359,17 +395,10 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .welcome h1 {
-                font-size: 3rem;
-            }
-
-            .memory-container {
-                grid-template-columns: 1fr;
-            }
-
-            .final-message h2 {
-                font-size: 2.5rem;
-            }
+            .welcome h1 { font-size: 3rem; }
+            .memory-container { grid-template-columns: 1fr; }
+            .final-message h2 { font-size: 2.5rem; }
+            .top-bar { padding: 1rem; }
         }
     </style>
 </head>
@@ -377,12 +406,28 @@
 <body>
     <div class="magic-sparkles"></div>
     <div class="floating-hearts">
-        <!-- Hearts will be generated via CSS -->
         <div class="heart" style="--float-duration: 6s; --delay: 0s; --translate-x: 20px;">💝</div>
         <div class="heart" style="--float-duration: 8s; --delay: 1s; --translate-x: -30px;">💖</div>
         <div class="heart" style="--float-duration: 7s; --delay: 2s; --translate-x: 40px;">💗</div>
         <div class="heart" style="--float-duration: 9s; --delay: 3s; --translate-x: -20px;">💓</div>
         <div class="heart" style="--float-duration: 5s; --delay: 4s; --translate-x: 30px;">💕</div>
+    </div>
+
+    <!-- Heart Button at Top -->
+    <div class="top-bar">
+        <button class="flower-btn" onclick="toggleFlowerModal()">
+            💖 Open Your Flowers 💐
+        </button>
+    </div>
+
+    <!-- Flower Bouquet Surprise Overlay -->
+    <div class="modal-overlay" id="flowerModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="toggleFlowerModal()">&times;</button>
+            <h3 class="modal-title">Flowers For You 🌸</h3>
+            <img src="./bouquet.jpg" alt="Flower Bouquet" class="bouquet-sticker">
+            <p style="color: #666; font-size: 1.1rem;">A special bouquet for my special girl! 💐✨</p>
+        </div>
     </div>
 
     <section class="welcome">
@@ -408,11 +453,11 @@
         </div>
     </div>
 
-    <!-- Spotify Player (Placed Right Above Final Message) -->
+    <!-- Spotify Player -->
     <div class="spotify-container">
         <iframe 
             style="border-radius:12px" 
-            src="https://open.spotify.com/embed/track/44A3P2PSt313P1i3A9P3L0?utm_source=generator" 
+            src="https://open.spotify.com/embed/track/0pYDUAXXUanILl4FrDtdIt?utm_source=generator" 
             width="100%" 
             height="152" 
             frameBorder="0" 
@@ -434,6 +479,13 @@ I hope today is as amazing as you are, but even more than that, I hope your whol
 Many, many happy returns of the day, my love. I love you so, so, so much! ❤️✨</p>
         <a href="#" class="goodbye-btn">I Love You Saima💝</a>
     </section>
+
+    <script>
+        function toggleFlowerModal() {
+            const modal = document.getElementById('flowerModal');
+            modal.classList.toggle('active');
+        }
+    </script>
 </body>
 
 </html>
