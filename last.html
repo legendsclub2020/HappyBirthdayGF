@@ -73,7 +73,7 @@
             box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
         }
 
-        /* Bouquet Modal Overlay (Matching Web Theme) */
+        /* Bouquet Modal Overlay */
         .bouquet-modal {
             display: none;
             position: fixed;
@@ -177,20 +177,6 @@
             }
         }
 
-        /* Spotify Player Container */
-        .spotify-container {
-            max-width: 800px;
-            margin: 2rem auto 0 auto;
-            padding: 0 1rem;
-            position: relative;
-            z-index: 3;
-        }
-
-        .spotify-container iframe {
-            border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
         /* Sparkle Effect */
         .magic-sparkles {
             position: fixed;
@@ -280,7 +266,7 @@
             animation: fadeIn 2s ease 0.5s both;
         }
 
-        /* Memory Cards */
+        /* Memory Cards Container */
         .memory-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -292,6 +278,32 @@
             position: relative;
         }
 
+        .memory-card-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Custom Themed Mini Spotify Bar */
+        .mini-spotify-bar {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+            background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+            padding: 3px;
+        }
+
+        .mini-spotify-bar.light-pink {
+            background: linear-gradient(135deg, #ffe4e1, #ffb6c1);
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
+        }
+
+        .mini-spotify-bar iframe {
+            border-radius: 10px;
+            display: block;
+        }
+
         .memory-card {
             background: rgba(255, 255, 255, 0.9);
             border-radius: 20px;
@@ -300,10 +312,11 @@
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            height: 100%;
         }
 
         .memory-card:hover {
-            transform: translateY(-10px) scale(1.02);
+            transform: translateY(-8px) scale(1.02);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
@@ -347,6 +360,20 @@
             font-size: 1rem;
             line-height: 1.5;
             color: #666;
+        }
+
+        /* Spotify Bottom Player Container */
+        .spotify-container {
+            max-width: 800px;
+            margin: 2rem auto 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .spotify-container iframe {
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         /* Final Message Section */
@@ -505,25 +532,48 @@
         <p>Every moment spent with you has been magical.You are my wife,my baby,my girlfriend,my better half,my other half,ur my everything Saima ...</p>
     </section>
 
+    <!-- Memory Cards Container with Dedicated Spotify Bars Above Each Card -->
     <div class="memory-container">
-        <div class="memory-card">
-            <img src="./d1.jpg" alt="First Date" class="memory-img">
-            <div class="memory-date">My Wife</div>
-            <div class="memory-caption">You’re truly the sweetest girls I know, and I feel lucky to have a partner like you.❤️</div>
+
+        <!-- Card 1: My Wife (With Track 1 above it) -->
+        <div class="memory-card-wrapper">
+            <div class="mini-spotify-bar">
+                <iframe style="border-radius:8px" src="https://open.spotify.com/embed/track/7iSWYBp3QGl3eQyv8l40hs?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="memory-card">
+                <img src="./d1.jpg" alt="My Wife" class="memory-img">
+                <div class="memory-date">My Wife</div>
+                <div class="memory-caption">You’re truly the sweetest girls I know, and I feel lucky to have a partner like you.❤️</div>
+            </div>
         </div>
-        <div class="memory-card">
-            <img src="./d2.jpg" alt="Beach Day" class="memory-img">
-            <div class="memory-date">I Love You Saima</div>
-            <div class="memory-caption">May your journey ahead be filled with happiness, success, and endless smiles.😊💕</div>
+
+        <!-- Card 2: I Love You Saima (With "Can't Help Falling in Love" in Light Pink above it) -->
+        <div class="memory-card-wrapper">
+            <div class="mini-spotify-bar light-pink">
+                <iframe style="border-radius:8px" src="https://open.spotify.com/embed/track/77cOt0YCOoZMuPGZ8sfND4?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="memory-card">
+                <img src="./d2.jpg" alt="I Love You Saima" class="memory-img">
+                <div class="memory-date">I Love You Saima</div>
+                <div class="memory-caption">May your journey ahead be filled with happiness, success, and endless smiles.😊💕</div>
+            </div>
         </div>
-        <div class="memory-card">
-            <img src="./d3.jpg" alt="Movie Night" class="memory-img">
-            <div class="memory-date">Pretty Soul,Pretty Face You are Just the Prettiest girl in the world</div>
-            <div class="memory-caption">Keep being the amazing person you are—you make every moment brighter.🌸💖</div>
+
+        <!-- Card 3: Pretty Soul (With Track 3 above it) -->
+        <div class="memory-card-wrapper">
+            <div class="mini-spotify-bar">
+                <iframe style="border-radius:8px" src="https://open.spotify.com/embed/track/1tWaY9Spj1w3cIgVXG3B3r?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="memory-card">
+                <img src="./d3.jpg" alt="Pretty Soul" class="memory-img">
+                <div class="memory-date">Pretty Soul,Pretty Face You are Just the Prettiest girl in the world</div>
+                <div class="memory-caption">Keep being the amazing person you are—you make every moment brighter.🌸💖</div>
+            </div>
         </div>
+
     </div>
 
-    <!-- Updated Spotify Track Section (Directly Above Final Message) -->
+    <!-- Main Spotify Track Section -->
     <div class="spotify-container">
         <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2MRJ3Oqb5yAONPvQyoWnQ9?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
