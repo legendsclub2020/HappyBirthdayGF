@@ -1,203 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Saima! 💖</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <title>Happy Birthday Saima ✨</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Quicksand', sans-serif;
-            background: linear-gradient(135deg, #ffd1dc 0%, #e6e6fa 25%, #ffefd5 50%, #e6e6fa 75%, #ffd1dc 100%);
+            min-height: 100vh;
+            background: linear-gradient(135deg,
+                    #ffd1dc 0%,
+                    #e6e6fa 25%,
+                    #ffefd5 50%,
+                    #e6e6fa 75%,
+                    #ffd1dc 100%);
             background-size: 400% 400%;
             animation: gradientFlow 15s ease infinite;
+            font-family: 'Quicksand', sans-serif;
+            overflow-x: hidden;
+            color: #4a4a4a;
         }
 
         @keyframes gradientFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
-        .font-dancing {
+        /* Enhanced Sparkle Effect */
+        .magic-sparkles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: white;
+            animation: twinkle var(--duration, 4s) ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+        }
+
+        /* Generate 50 sparkles with different positions and animations */
+        .magic-sparkles::before,
+        .magic-sparkles::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, white 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: sparkleLayer 8s linear infinite;
+            opacity: 0.5;
+        }
+
+        .magic-sparkles::after {
+            animation-delay: -4s;
+            transform: rotate(45deg);
+        }
+
+        @keyframes sparkleLayer {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-50px);
+            }
+        }
+
+        /* Floating Hearts */
+        .floating-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(255, 105, 180, 0.6);
+            animation: floatHeart var(--float-duration, 6s) ease-in-out infinite;
+            animation-delay: var(--delay, 0s);
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translate(0, 100vh) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(var(--translate-x, 0), -100vh) rotate(360deg);
+            }
+        }
+
+        /* Welcome Section */
+        .welcome {
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .welcome h1 {
             font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #ff69b4;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeInScale 2s ease;
         }
 
-        /* Glassmorphism card effects */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.45);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+        .welcome p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 1.5rem auto;
+            line-height: 1.6;
+            animation: fadeIn 2s ease 0.5s both;
         }
 
-        /* Floating Animation */
+        /* Enhanced Memory Cards */
+        .memory-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            z-index: 3;
+            position: relative;
+        }
+
+        .memory-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .memory-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
+        }
+
+        .memory-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .memory-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            transition: transform 0.5s ease;
+        }
+
+        .memory-card:hover .memory-img {
+            transform: scale(1.05);
+        }
+
+        .memory-date {
+            font-family: 'Dancing Script', cursive;
+            color: #ff69b4;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .memory-caption {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        /* Final Message Section */
+        .final-message {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            margin-top: 3rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .final-message h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #ff69b4;
+            margin-bottom: 2rem;
+            animation: heartbeat 2s infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .final-message p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .goodbye-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background: linear-gradient(45deg, #ff69b4, #da70d6);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+            animation: float 3s infinite ease-in-out;
+        }
+
+        .goodbye-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.6);
+        }
+
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(3deg); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
-        .animate-float {
-            animation: float 4s ease-in-out infinite;
+        /* Animations */
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Generate Hearts */
+        .js-generate-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
         }
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 12px;
         }
+
         ::-webkit-scrollbar-track {
-            background: rgba(255, 209, 220, 0.3);
+            background: rgba(255, 255, 255, 0.4);
         }
+
         ::-webkit-scrollbar-thumb {
-            background: rgba(244, 114, 182, 0.5);
-            border-radius: 4px;
+            background: linear-gradient(45deg, #ff69b4, #da70d6);
+            border-radius: 6px;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(244, 114, 182, 0.8);
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .welcome h1 {
+                font-size: 3rem;
+            }
+
+            .memory-container {
+                grid-template-columns: 1fr;
+            }
+
+            .final-message h2 {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
-<body class="min-h-screen text-gray-800 relative overflow-x-hidden pb-12">
 
-    <!-- Header Section -->
-    <header class="text-center pt-12 pb-6 px-4">
-        <h1 class="font-dancing text-5xl md:text-7xl text-pink-600 font-bold drop-shadow-md mb-2">
-            Happy Birthday Saima! 🎉
-        </h1>
-        <p class="text-lg md:text-xl text-pink-500 font-semibold tracking-wide">
-            Wishing you a day as wonderful as you are! ✨
-        </p>
-    </header>
+<body>
+    <div class="magic-sparkles"></div>
+    <div class="floating-hearts">
+        <!-- Hearts will be generated via CSS -->
+        <div class="heart" style="--float-duration: 6s; --delay: 0s; --translate-x: 20px;">💝</div>
+        <div class="heart" style="--float-duration: 8s; --delay: 1s; --translate-x: -30px;">💖</div>
+        <div class="heart" style="--float-duration: 7s; --delay: 2s; --translate-x: 40px;">💗</div>
+        <div class="heart" style="--float-duration: 9s; --delay: 3s; --translate-x: -20px;">💓</div>
+        <div class="heart" style="--float-duration: 5s; --delay: 4s; --translate-x: 30px;">💕</div>
+    </div>
 
-    <!-- Main Container -->
-    <main class="max-w-4xl mx-auto px-4 space-y-12">
+    <section class="welcome">
+        <h1>Happy Birthday Saima</h1>
+        <p>Every moment spent with you has been magical.You are my wife,my baby,my girlfriend,my better half,my other half,ur my everything Saima ...</p>
+    </section>
 
-        <!-- Photo Memories Grid -->
-        <section class="glass-card rounded-3xl p-6 md:p-8 shadow-xl">
-            <h2 class="font-dancing text-3xl md:text-4xl text-pink-600 text-center mb-6 flex items-center justify-center gap-2">
-                <i data-lucide="heart" class="fill-pink-500 text-pink-500"></i> Memories Together <i data-lucide="heart" class="fill-pink-500 text-pink-500"></i>
-            </h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Memory 1 -->
-                <div class="group relative rounded-2xl overflow-hidden shadow-md transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-white/60 p-2">
-                    <div class="overflow-hidden rounded-xl h-64">
-                        <img src="./d1.jpg" alt="Memory 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-3 text-center">
-                        <p class="font-semibold text-pink-600">Pure Joy ✨</p>
-                    </div>
-                </div>
+    <div class="memory-container">
+        <div class="memory-card">
+            <img src="./d1.jpg" alt="First Date" class="memory-img">
+            <div class="memory-date">My Wife</div>
+            <div class="memory-caption">You’re truly the sweetest girls I know, and I feel lucky to have a partner like you.❤️</div>
+        </div>
+        <div class="memory-card">
+            <img src="./d2.jpg" alt="Beach Day" class="memory-img">
+            <div class="memory-date">I Love You Saima</div>
+            <div class="memory-caption">May your journey ahead be filled with happiness, success, and endless smiles.😊💕</div>
+        </div>
+        <div class="memory-card">
+            <img src="./d3.jpg" alt="Movie Night" class="memory-img">
+            <div class="memory-date">Pretty Soul,Pretty Face You are Just the Prettiest girl in the world</div>
+            <div class="memory-caption">Keep being the amazing person you are—you make every moment brighter.🌸💖</div>
+        </div>
 
-                <!-- Memory 2 -->
-                <div class="group relative rounded-2xl overflow-hidden shadow-md transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-white/60 p-2">
-                    <div class="overflow-hidden rounded-xl h-64">
-                        <img src="./d2.jpg" alt="Memory 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-3 text-center">
-                        <p class="font-semibold text-pink-600">Unforgettable Day 🌸</p>
-                    </div>
-                </div>
+    </div>
 
-                <!-- Memory 3 -->
-                <div class="group relative rounded-2xl overflow-hidden shadow-md transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-white/60 p-2">
-                    <div class="overflow-hidden rounded-xl h-64">
-                        <img src="./d3.jpg" alt="Memory 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-3 text-center">
-                        <p class="font-semibold text-pink-600">Always Smiling 😊</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Interactive Bouquet Section -->
-        <section class="glass-card rounded-3xl p-6 md:p-8 shadow-xl text-center relative overflow-hidden">
-            <h2 class="font-dancing text-3xl md:text-4xl text-pink-600 mb-4">
-                A Little Gift For You 💐
-            </h2>
-            <p class="text-gray-600 mb-6">Click the button below to receive your special birthday flowers!</p>
-            
-            <button id="bouquetBtn" class="bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-2 mx-auto">
-                <i data-lucide="gift"></i> Claim Your Flowers!
-            </button>
-
-            <!-- Hidden Bouquet Image -->
-            <div id="bouquetContainer" class="hidden mt-6 transition-all duration-700 ease-out transform scale-90 opacity-0">
-                <div class="relative inline-block">
-                    <img src="./bouquet.jpg" alt="Flower Bouquet" class="max-w-xs md:max-w-sm rounded-2xl shadow-2xl mx-auto border-4 border-white/80 animate-float">
-                    <div class="mt-4 bg-white/80 backdrop-blur-sm p-3 rounded-xl shadow-md max-w-xs mx-auto">
-                        <p class="text-pink-600 font-semibold italic">"May your year bloom as beautifully as these flowers!" 🌸</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Spotify & Special Message Section -->
-        <section class="glass-card rounded-3xl p-6 md:p-8 shadow-xl">
-            <h2 class="font-dancing text-3xl md:text-4xl text-pink-600 text-center mb-6 flex items-center justify-center gap-2">
-                <i data-lucide="music" class="text-pink-500"></i> Soundtrack for Your Special Day <i data-lucide="sparkles" class="text-yellow-400"></i>
-            </h2>
-
-            <!-- Spotify Embed Container -->
-            <div class="w-full max-w-lg mx-auto rounded-2xl overflow-hidden shadow-lg mb-8 border-2 border-pink-200">
-                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2bfL9vQv0kOQ9Y3A24O1aC?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
-
-            <!-- Heartfelt Text Message -->
-            <div class="bg-white/70 backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-inner border border-pink-100 max-w-2xl mx-auto space-y-4 text-gray-700 leading-relaxed">
-                <p class="first-letter:text-3xl first-letter:font-bold first-letter:text-pink-500">
-                    Saima, on your birthday, I want to remind you how incredibly special you are. Bringing you into my life has brought so much light, warmth, and laughter. Every single memory we've made together is something I treasure deeply.
-                </p>
-                <p>
-                    I hope this next year brings you closer to all your big dreams, surrounds you with endless happiness, and fills your days with genuine peace. Never stop being the bright, kind, and beautiful soul that you are.
-                </p>
-                <p class="text-right font-dancing text-2xl text-pink-600 font-bold pt-2">
-                    Happy Birthday once again! 💕
-                </p>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="text-center mt-12 text-pink-400 font-medium text-sm">
-        Made with ❤️ for Saima's Birthday
-    </footer>
-
-    <!-- JavaScript logic -->
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-
-        // Bouquet Toggle Logic
-        const bouquetBtn = document.getElementById('bouquetBtn');
-        const bouquetContainer = document.getElementById('bouquetContainer');
-
-        bouquetBtn.addEventListener('click', () => {
-            if (bouquetContainer.classList.contains('hidden')) {
-                bouquetContainer.classList.remove('hidden');
-                setTimeout(() => {
-                    bouquetContainer.classList.remove('scale-90', 'opacity-0');
-                    bouquetContainer.classList.add('scale-100', 'opacity-100');
-                }, 50);
-                bouquetBtn.innerHTML = `<i data-lucide="heart" class="fill-white"></i> Enjoy Your Bouquet!`;
-                lucide.createIcons();
-            } else {
-                bouquetContainer.classList.remove('scale-100', 'opacity-100');
-                bouquetContainer.classList.add('scale-90', 'opacity-0');
-                setTimeout(() => {
-                    bouquetContainer.classList.add('hidden');
-                }, 500);
-                bouquetBtn.innerHTML = `<i data-lucide="gift"></i> Claim Your Flowers!`;
-                lucide.createIcons();
-            }
-        });
-    </script>
+    <section class="final-message">
+        <h2>Thank You for being my Girlfriend</h2>
+        <p>HAPPY BIRTHDAY SAIMA!!!! 🎂❤️💫<br>
+            You are so much more than just my girlfriend—you are my wife, my other half, my better half, my ultimate comfort zone, my heart, and my absolute everything. I love you, Saima. I hope today is as amazing as you are, but even more than that, I hope your whole life is filled with joy, peace, and endless achievements. <br>
+            On your birthday, I just wish for endless happiness, love, and success to come your way.🌸</p>
+        <p>May you grow into the most successful, happiest woman in the world. Thank you for being in my life and for being my girlfriend. I will be forever grateful to have you by my side. Many, many happy returns of the day, my love. I love you so, so, so much! ❤️✨✨</p>
+        <a href="#" class="goodbye-btn">I LOVE YOU SAIMA 💝</a>
+    </section>
 </body>
+
 </html>
